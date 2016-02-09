@@ -6,6 +6,7 @@ class Account {
     String password
     String name
 
+    static hasMany = [messages: Message]
 
     static constraints = {
         handle nullable: false, unique: true
