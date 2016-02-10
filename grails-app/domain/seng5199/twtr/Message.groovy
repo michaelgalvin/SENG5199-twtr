@@ -8,5 +8,6 @@ class Message {
 
     static constraints = {
         text minSize: 1, maxSize: 40
+        author nullable: false
     }
 }
