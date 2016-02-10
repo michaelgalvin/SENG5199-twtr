@@ -5,7 +5,8 @@ class Account {
     String email
     String password
     String name
-    static hasMany = [followed: Account]
+
+    static hasMany = [following: Account, followeres: Account]
 
     static constraints = {
         handle nullable: false, unique: true

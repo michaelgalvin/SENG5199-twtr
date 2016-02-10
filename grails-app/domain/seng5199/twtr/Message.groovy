@@ -5,6 +5,7 @@ class Message {
     Account author
     Date dateCreated
 
+
     static constraints = {
         text minSize: 1, maxSize: 40
     }
