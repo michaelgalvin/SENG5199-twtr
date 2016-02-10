@@ -13,12 +13,14 @@ class MessageSpec extends Specification {
 
     void "M1: Save a message with a valid account and message"(){
         setup:
-        def acc = Mock(Account)
-        println "Account id is:" + acc.id
+//        def name = new Account(handle: 'groovyNewbie', email: 'newb@gmail.com', password: '12345678aH', name: 'Mike')
+
+//        def acc = Mock(Account)
+//        println "Account id is:" + acc.id
 
         when:
         def message = new Message(text: "First tweet", author: "Mike")
-        message.authorId = acc.id
+        message.save()
 
         then:
         message.validate()
