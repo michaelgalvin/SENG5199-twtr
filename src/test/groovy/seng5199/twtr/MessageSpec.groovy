@@ -13,7 +13,6 @@ import grails.test.mixin.Mock
 class MessageSpec extends Specification {
 
     def "M1: Save a message with a valid account and message"() {
-
         when:
         Account acc = new Account(handle: 'groovyNewbie', email: 'newb@gmail.com', password: '12345678aH', name: 'Mike')
         def message = new Message(text: "First tweet", author: acc)
@@ -37,6 +36,7 @@ class MessageSpec extends Specification {
                 println it
             }
         }
+
         where:
         text     | author        | result
         ''       | Mock(Account) | false
