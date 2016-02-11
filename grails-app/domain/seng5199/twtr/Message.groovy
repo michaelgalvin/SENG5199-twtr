@@ -3,7 +3,7 @@ package seng5199.twtr
 class Message {
     String text
     Account author
-    Date dateCreated
+  //  Date dateCreated
 
 
     static constraints = {

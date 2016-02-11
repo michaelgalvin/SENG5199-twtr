@@ -12,7 +12,8 @@ class AccountSpec extends Specification {
     def setup() {
 
     }
-    void "A1: Valid Entries"() {
+
+    def "A1: Valid Entries"() {
         when: ''
         def name = new Account(handle: 'groovyNewbie', email: 'newb@gmail.com', password: '12345678aH', name: 'Mike')
 
@@ -21,7 +22,7 @@ class AccountSpec extends Specification {
     }
 
 
-    void "A2-A3:Test all the things!"() {
+    def "A2-A3:Test all the things!"() {
         when:
         def account = new Account(handle: handle, email: email, password: password, name: name)
 
@@ -29,11 +30,11 @@ class AccountSpec extends Specification {
         result == account.validate()
 
         where:
-        handle          |   email                   |   password        |  name         |   result
-        ''              |   'galvi024@umn.com'      |   '1234567aH'     |   'Mike'      |   false
-        'mike'          |   ''                      |   '1234567aH'     |   'Mike'      |   false
-        'mike'          |   'galvi024@umn.edu'      |   ''              |   'Mike'      |   false
-        'mike'          |   'galvi024@umn.edu'      |   'asdadas'       |   ''          |   false
+        handle | email              | password    | name   | result
+        ''     | 'galvi024@umn.com' | '1234567aH' | 'Mike' | false
+        'mike' | ''                 | '1234567aH' | 'Mike' | false
+        'mike' | 'galvi024@umn.edu' | ''          | 'Mike' | false
+        'mike' | 'galvi024@umn.edu' | 'asdadas'   | ''     | false
     }
 
     def cleanup() {

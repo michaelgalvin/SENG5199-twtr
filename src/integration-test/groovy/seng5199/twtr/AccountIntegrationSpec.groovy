@@ -15,7 +15,7 @@ class AccountIntegrationSpec extends Specification {
     def cleanup() {
     }
 
-    void "Non-Unique handle"() {
+    def "Non-Unique handle"() {
         given:
         Account intAccount = new Account(handle: 'groovyNewby', email: 'newb@groovy.com', password: '1234567wE', name: 'Hermoine Granger')
 
@@ -27,7 +27,7 @@ class AccountIntegrationSpec extends Specification {
         !badAccount.save()
     }
 
-    void "Non-Unique email"() {
+    def "Non-Unique email"() {
         given:
         Account intAccount = new Account(handle: 'groovyNewby', email: 'newb@groovy.com', password: '1234567wE', name: 'Hermoine Granger')
 
