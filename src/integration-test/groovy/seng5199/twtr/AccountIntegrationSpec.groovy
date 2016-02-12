@@ -74,6 +74,11 @@ class AccountIntegrationSpec extends Specification {
         then:
         for (item in me.followeres.name.iterator()) {
             println item
+            item == "user2"
+        }
+        for (item in you.followeres.name.iterator()) {
+            println item
+            item == "user1"
         }
         println "Me has " + me.followeres.name + " following his account."
         println "You has " + you.followeres.name + " following her account."
