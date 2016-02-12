@@ -8,11 +8,10 @@ import spock.lang.*
 @Integration
 @Rollback
 class AccountIntegrationSpec extends Specification {
+    Account intAccount
+    Account badAccount
 
     def setup() {
-    }
-
-    def cleanup() {
     }
 
     def "A4: Non-Unique handle"() {
@@ -26,6 +25,10 @@ class AccountIntegrationSpec extends Specification {
         Account badAccount = new Account(handle: 'groovyNewby', email: 'newb2@groovy.com', password: '1234567wE', name: 'Hermoine Granger')
         !badAccount.save()
     }
+//    def cleanup(){
+//        intAccount.delete(flush: true, failOnError: true)
+//        badAccount.delete(flush: true, failOnError: true)
+//    }
 
     def "A4: Non-Unique email"() {
         given:
@@ -47,14 +50,13 @@ class AccountIntegrationSpec extends Specification {
         Account follower3 = new Account(handle: 'groovyNewby4', email: 'newb4@groovy.com', password: '1234567wE', name: 'user4')
 
         when:
-        def follow1 = me.addToFolloweres(follower1)
-        def follow2 = me.addToFolloweres(follower2)
-        def follow3 = me.addToFolloweres(follower3)
-        follow1.save()
-        follow2.save()
-        follow3.save()
+        me.addToFolloweres(follower1)
+        me.addToFolloweres(follower2)
+        me.addToFolloweres(follower3)
+        me.save()
 
         then:
+        Account.get(me.id).followeres
         me.followeres.size() == 3
 //        println "Account has these followers :" + me.followeres.name
     }
