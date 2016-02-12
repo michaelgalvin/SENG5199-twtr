@@ -8,11 +8,6 @@ import spock.lang.*
 @Integration
 @Rollback
 class AccountIntegrationSpec extends Specification {
-    Account intAccount
-    Account badAccount
-
-    def setup() {
-    }
 
     def "A4: Non-Unique handle"() {
         given:
@@ -25,10 +20,7 @@ class AccountIntegrationSpec extends Specification {
         Account badAccount = new Account(handle: 'groovyNewby', email: 'newb2@groovy.com', password: '1234567wE', name: 'Hermoine Granger')
         !badAccount.save()
     }
-//    def cleanup(){
-//        intAccount.delete(flush: true, failOnError: true)
-//        badAccount.delete(flush: true, failOnError: true)
-//    }
+
 
     def "A4: Non-Unique email"() {
         given:
@@ -45,7 +37,7 @@ class AccountIntegrationSpec extends Specification {
     def "F1: Account may have multiple followers"() {
         given:
         Account        me = new Account(handle: 'groovyNewby1', email: 'newb1@groovy.com', password: '1234567wE', name: 'user1')
-        Account follower1 = new Account(handle: 'groovyNewby2', email: 'newb@2groovy.com', password: '1234567wE', name: 'user2')
+        Account follower1 = new Account(handle: 'groovyNewby2', email: 'newb@groovy.com', password: '1234567wE', name: 'user2')
         Account follower2 = new Account(handle: 'groovyNewby3', email: 'newb3@groovy.com', password: '1234567wE', name: 'user3')
         Account follower3 = new Account(handle: 'groovyNewby4', email: 'newb4@groovy.com', password: '1234567wE', name: 'user4')
 
@@ -54,11 +46,12 @@ class AccountIntegrationSpec extends Specification {
         me.addToFolloweres(follower2)
         me.addToFolloweres(follower3)
         me.save()
+        Account retrieved = Account.get(me.id)
 
         then:
-        Account.get(me.id).followeres
-        me.followeres.size() == 3
-//        println "Account has these followers :" + me.followeres.name
+        retrieved.followeres.find { it.handle == "groovyNewby2"}
+        retrieved.followeres.find { it.handle == "groovyNewby3"}
+        retrieved.followeres.find { it.handle == "groovyNewby4"}
     }
 
 
