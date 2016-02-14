@@ -6,7 +6,7 @@ class Account {
     String password
     String name
 
-    static hasMany = [following: Account, followeres: Account]
+    static hasMany = [following: Account, followers: Account]
 
     static constraints = {
         handle nullable: false, unique: true

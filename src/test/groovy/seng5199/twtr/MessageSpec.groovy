@@ -12,13 +12,15 @@ import grails.test.mixin.Mock
 @Mock(Account)
 class MessageSpec extends Specification {
 
-    def "M1: Save a message with a valid account and message"() {
+    def "M1: Saving a message with a valid account and message should succeed"() {
         when:
         Account acc = new Account(handle: 'groovyNewbie', email: 'newb@gmail.com', password: '12345678aH', name: 'Mike')
         def message = new Message(text: "First tweet", author: acc)
-        message.save()
+        def result = message.save()
 
         then:
+        result
+
         if (!message.validate()) {
             message.errors.each {
                 println it
