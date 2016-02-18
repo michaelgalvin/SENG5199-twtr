@@ -11,29 +11,36 @@ class AccountIntegrationSpec extends Specification {
 
     def "A4: Non-Unique handle"() {
         given:
+        def startingAccounts = Account.count()
         Account intAccount = new Account(handle: 'groovyNewby', email: 'newb@groovy.com', password: '1234567wE', name: 'Hermoine Granger')
         intAccount.save()
         Account badAccount = new Account(handle: 'groovyNewby', email: 'newb2@groovy.com', password: '1234567wE', name: 'Hermoine Granger')
 
         when:
-        def result = badAccount.save()
+        badAccount.save()
 
         then: "Should fail trying to save with non-unique handle"
-        !result
-
+        !badAccount.id
+        badAccount.hasErrors()
+        badAccount.errors.getFieldError('handle')
+        Account.count() == startingAccounts + 1
     }
 
     def "A4: Non-Unique email"() {
         given:
+        def startingAccounts = Account.count()
         Account intAccount = new Account(handle: 'groovyNewby', email: 'newb@groovy.com', password: '1234567wE', name: 'Hermoine Granger')
         intAccount.save()
         Account badAccount = new Account(handle: 'groovyNewby2', email: 'newb@groovy.com', password: '1234567wE', name: 'Hermoine Granger')
 
         when:
-        def result = badAccount.save()
+        badAccount.save()
 
         then: "Should fail trying to save with non-unique email"
-        !result
+        !badAccount.id
+        badAccount.hasErrors()
+        badAccount.errors.getFieldError('email')
+        Account.count() == startingAccounts + 1
     }
 
     def "F1: Account may have multiple followers"() {
@@ -51,7 +58,7 @@ class AccountIntegrationSpec extends Specification {
         Account retrieved = Account.get(me.id)
 
         then:
-        retrieved.followers.size()>1
+        retrieved.followers.size() > 1
         retrieved.followers.find { it.handle == "groovyNewby2" }
         retrieved.followers.find { it.handle == "groovyNewby3" }
         retrieved.followers.find { it.handle == "groovyNewby4" }
@@ -68,6 +75,8 @@ class AccountIntegrationSpec extends Specification {
         me.save()
         you.addToFollowers(me)
         you.save()
+        me = Account.get(me.id)
+        you = Account.get(you.id)
 
         then:
         you.followers.find { it.handle == me.handle }
