@@ -2,23 +2,27 @@ package seng5199.twtr
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification
+import spock.lang.Unroll
 
-/**
- * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
- */
+@Unroll
 @TestFor(Account)
 class AccountSpec extends Specification {
 
-    def setup() {
-
-    }
-
     def "A1: Valid Entries"() {
         when: ''
+        def accountsBeforeSave = Account.count()
         def name = new Account(handle: 'groovyNewbie', email: 'newb@gmail.com', password: '12345678aH', name: 'Mike')
 
         then: 'validation should pass'
         name.validate()
+
+        when:
+        name.save()
+
+        then:
+        !name.hasErrors()
+        name.id
+        Account.count() == accountsBeforeSave + 1
     }
 
     /* Saving an account missing any of the required values of
@@ -27,19 +31,28 @@ class AccountSpec extends Specification {
         - password and
         - name will fail
      */
-    def "A2:Test account validation"() {
+    def "A2:Test account validation: #description"() {
         when:
+        def accountsBeforeSave = Account.count()
         def account = new Account(handle: handle, email: email, password: password, name: name)
 
         then:
-        result == account.validate()
+        !account.validate()
+
+        when:
+        account.save()
+
+        then:
+        account.hasErrors()
+        !account.id
+        Account.count() == accountsBeforeSave
 
         where:
-        handle | email              | password    | name   | result
-        ''     | 'galvi024@umn.com' | '1234567aH' | 'Mike' | false
-        'mike' | ''                 | '1234567aH' | 'Mike' | false
-        'mike' | 'galvi024@umn.edu' | ''          | 'Mike' | false
-        'mike' | 'galvi024@umn.edu' | '1234567aH' | ''     | false
+        description     | handle | email              | password    | name
+        'Blank handle'  | ''     | 'galvi024@umn.com' | '1234567aH' | 'Mike'
+        'Blank email'   | 'mike' | ''                 | '1234567aH' | 'Mike'
+        'Blank password'| 'mike' | 'galvi024@umn.edu' | ''          | 'Mike'
+        'Blank name'    | 'mike' | 'galvi024@umn.edu' | '1234567aH' | ''
     }
 
     /* Passwords must be
@@ -50,28 +63,56 @@ class AccountSpec extends Specification {
         - at least 1 upper-case letter
         - whitespace characters are not allowed
      */
-    def "A3:Test password validation"() {
+    def "A3:Test fails to validate or save invalid password: #description"() {
         when:
-        def account = new Account(handle: handle, email: email, password: password, name: name)
+        def startingNumberOfAccounts = Account.count()
+        def account = new Account(handle: 'mike', email: 'galvi024@umn.edu', password: password, name: 'Magdalena')
 
         then:
-        result == account.validate()
+        !account.validate()
+
+        when:
+        account.save()
+
+        then:
+        !account.id
+        account.hasErrors()
+        Account.count() == startingNumberOfAccounts
+        account.errors.hasFieldErrors('password')
+
 
         where:
-        handle | email              | password                            | name            | result
-        'mike' | 'galvi024@umn.edu' | '1Aasdad'                           | 'Magdalena'     | false
-        'mike' | 'galvi024@umn.edu' | '1Aabcdefghijklmnopqrstuvwxyz'      | 'Magdalena'     | false
-        'mike' | 'galvi024@umn.edu' | '1Aa2345678901234567890123456'      | 'Magdalena'     | false
-        'mike' | 'galvi024@umn.edu' | '1Aabcdefghijklmn'                  | 'Magdalena'     | true
-        'mike' | 'galvi024@umn.edu' | '1a23456789012345'                  | 'Magdalena'     | false
-        'mike' | 'galvi024@umn.edu' | '1A23456789012345'                  | 'Magdalena'     | false
-        'mike' | 'galvi024@umn.edu' | '1abcdefghijklmno'                  | 'Magdalena'     | false
-        'mike' | 'galvi024@umn.edu' | '1Aa             '                  | 'Magdalena'     | false
-        'mike' | 'galvi024@umn.edu' | '1Abcd^fghijklmno'                  | 'Magdalena'     | true
-        'mike' | 'galvi024@umn.edu' | '1asdadas0000000WW'                 | 'Magdalena'     | false
-
+        description        | password
+        '7 chars'          | '1Aasdad'
+        'too long letters' | '1Aabcdefghijklmnopqrstuvwxyz'
+        'too long numbers' | '1Aa2345678901234567890123456'
+        'no cap'           | '1a23456789012345'
+        'no lower'         | '1A23456789012345'
+        'no number'        | 'abcdefghijklmno'
+        '3 chars'          | '1Aa             '
     }
 
-    def cleanup() {
+    def "A3:Saves with password: #description"() {
+        when:
+        def startingNumberOfAccounts = Account.count()
+        def account = new Account(handle: 'mike', email: 'galvi024@umn.edu', password: password, name: 'Magdalena')
+
+        then:
+        account.validate()
+
+        when:
+        account.save()
+
+        then:
+        account.id
+        !account.hasErrors()
+        Account.count() == startingNumberOfAccounts + 1
+        !account.errors.hasFieldErrors('password')
+
+        where:
+        description   | password
+        'ok'          | '1Aabcdefghijklmn'
+        'ok with ^'   | '1Abcd^fghijklmno'
+
     }
 }
