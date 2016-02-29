@@ -81,7 +81,5 @@ class AccountIntegrationSpec extends Specification {
         then:
         you.followers.find { it.handle == me.handle }
         me.followers.find { it.handle == you.handle }
-
-
     }
 }

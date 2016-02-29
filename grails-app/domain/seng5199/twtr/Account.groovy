@@ -1,8 +1,8 @@
 package seng5199.twtr
 
-//import grails.rest.*
-//
-//@Resource(uri='/account')
+import grails.rest.*
+
+@Resource(uri='/account', formats=['json', 'xml'])
 class Account {
     String handle
     String email
@@ -17,4 +17,16 @@ class Account {
         password nullable: false, matches: /((?=.*[^a-zA-Z])(?=.*[a-z])(?=.*[A-Z]).{8,16})/
         name nullable: false
     }
+    //Register Account domain for JSON rendering
+//    JSON.registerObjectMarshaller(Account) {
+//        def output = [:]
+//        output['id'] = it.id
+//        output['reviewContent'] = it.reviewContent
+//        output['reviewRating'] = it.reviewRating
+//        output['dateCreated'] = dateFormatter.format(it.dateCreated)
+//        output['reviewer'] = ["id": it.reviewer.id, "name": it.reviewer.getFullName()]
+//        output['reviewedUser'] = ["id": it.reviewedUser.id, "name": it.reviewedUser.getFullName()]
+//
+//        return output;
+//    }
 }
