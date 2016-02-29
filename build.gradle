@@ -70,8 +70,10 @@ dependencies {
 
     // Note: It is recommended to update to a more robust driver (Chrome, Firefox etc.)
     testRuntime 'org.seleniumhq.selenium:selenium-htmlunit-driver:2.44.0'
+    testCompile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7'
 
     console "org.grails:grails-console"
+    testCompile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7'
 }
 
 task wrapper(type: Wrapper) {
