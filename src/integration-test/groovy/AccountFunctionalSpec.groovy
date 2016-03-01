@@ -15,7 +15,7 @@ import spock.lang.Stepwise
 @Stepwise
 class AccountFunctionalSpec extends GebSpec {
     @Shared
-    def punchId
+    def accId
 
     RESTClient restClient
 
@@ -45,12 +45,23 @@ class AccountFunctionalSpec extends GebSpec {
         resp.data
 
         when:
-        punchId = resp.data.id
+        accId = resp.data.id
 
         then:
-        punchId
+        accId
         resp.data.handle == 'exitedToGraduate'
         resp.data.name == 'Graduate'
+    }
+
+    def 'A3: Create a REST endpoint that returns JSON data with Account values for a user based on an account id or handle address.'() {
+        when:
+        def resp = restClient.get(path: "/account/${accId}")
+
+        then:
+        resp.status == 200
+        resp.data.id == accId
+        resp.data.name == 'Graduate'
+        resp.data.handle == 'exitedToGraduate'
     }
 
     def 'A2: Return an error response from the create Account endpoint if the account values are invalid #description'() {
