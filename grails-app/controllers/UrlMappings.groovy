@@ -6,6 +6,7 @@ class UrlMappings {
                 // apply constraints here
             }
         }
+        "/api/accountRest"(resources:"accountRest")
 
         "/"(view:"/index")
         "500"(view:'/error')

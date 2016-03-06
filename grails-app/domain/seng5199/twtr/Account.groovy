@@ -1,8 +1,5 @@
 package seng5199.twtr
 
-import grails.rest.*
-
-@Resource(uri='/account', formats=['json', 'xml'])
 class Account {
     String handle
     String email
