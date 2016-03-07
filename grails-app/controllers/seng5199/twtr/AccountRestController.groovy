@@ -14,11 +14,9 @@ class AccountRestController extends RestfulController {
     def show() {
         def idIsNumber = (params.id as String).isNumber()
         if (idIsNumber) {
-            println("idIsNumber was true..." + params.id)
-            Account.get(params.id)
+            respond Account.get(params.id)
         } else {
-            println("idIsNumber was false..." + params.id)
-            Account.findByHandle(params.id)
+            respond Account.findByHandle(params.id)
         }
     }
 }

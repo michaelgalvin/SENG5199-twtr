@@ -78,7 +78,7 @@ class AccountFunctionalSpec extends GebSpec {
         resp.data.name == 'NewUser'
 
         when:
-        def resp2 = restClient.get(path: "/api/accountRest/newAccount")
+        def resp2 = restClient.get(path: "/api/accountRest/${newAccount.data.handle}")
 
         then:
         resp2.status == 200
