@@ -24,15 +24,6 @@ class AccountFunctionalSpec extends GebSpec {
         restClient = new RESTClient(baseUrl)
     }
 
-    def 'Make sure the endpoint is responding and initialized with 2 objects'() {
-        when:
-        def resp = restClient.get(path: '/api/accountRest')
-
-        then:
-        resp.status == 200
-        resp.data.size() == 2
-    }
-
     def 'A1: Create a REST endpoint that receives JSON data to create an Account'() {
         given:
         def acc = new Account(handle: 'exitedToGraduate', email: 'grad@umn.edu', password: '1234567Ad', name: 'Graduat')
@@ -86,14 +77,14 @@ class AccountFunctionalSpec extends GebSpec {
         resp.data.email == 'new@umn.edu'
         resp.data.name == 'NewUser'
 
-//        when:
-//        def resp2 = restClient.get(path: "/api/accountRest?handle=newAccount")
-//
-//        then:
-//        resp2.status == 200
-//        resp2.data.id
-//        resp2.data.handle == 'newAccount'
-//        resp2.data.email == 'new@umn.edu'
-//        resp2.data.name == 'NewUser'
+        when:
+        def resp2 = restClient.get(path: "/api/accountRest/newAccount")
+
+        then:
+        resp2.status == 200
+        resp2.data.id
+        resp2.data.handle == 'newAccount'
+        resp2.data.email == 'new@umn.edu'
+        resp2.data.name == 'NewUser'
     }
 }
