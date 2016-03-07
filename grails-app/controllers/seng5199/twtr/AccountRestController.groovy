@@ -1,6 +1,5 @@
 package seng5199.twtr
 
-import grails.converters.JSON
 import grails.rest.RestfulController
 
 class AccountRestController extends RestfulController {
@@ -16,7 +15,7 @@ class AccountRestController extends RestfulController {
         def idIsNumber = (params.id as String).isNumber()
         if (idIsNumber) {
             println("idIsNumber was true..." + params.id)
-            Account.findById(params.id)
+            Account.get(params.id)
         } else {
             println("idIsNumber was false..." + params.id)
             Account.findByHandle(params.id)
