@@ -28,7 +28,7 @@ class MessageFunctionalSpec extends GebSpec {
         def json = acc as JSON
 
         when:
-        def resp = restClient.post(path: '/api/accountRest', body: json as String, requestContentType: 'application/json')
+        def resp = restClient.post(path: '/api/account', body: json as String, requestContentType: 'application/json')
 
         then:
         resp.status == 201

@@ -30,7 +30,7 @@ class AccountFunctionalSpec extends GebSpec {
         def json = acc as JSON
 
         when:
-        def resp = restClient.post(path: '/api/accountRest', body: json as String, requestContentType: 'application/json')
+        def resp = restClient.post(path: '/api/account', body: json as String, requestContentType: 'application/json')
 
         then:
         resp.status == 201
@@ -47,7 +47,7 @@ class AccountFunctionalSpec extends GebSpec {
         def json = acc as JSON
 
         when:
-        restClient.post(path: '/api/accountRest', body: json as String, requestContentType: 'application/json')
+        restClient.post(path: '/api/account', body: json as String, requestContentType: 'application/json')
 
         then:
         HttpResponseException error = thrown(HttpResponseException)
@@ -65,10 +65,10 @@ class AccountFunctionalSpec extends GebSpec {
         given:
         def acc2 = new Account(handle: 'newAccount', email: 'new@umn.edu', password: '1234567Ad', name: 'NewUser')
         def json2 = acc2 as JSON
-        def newAccount = restClient.post(path: '/api/accountRest', body: json2 as String, requestContentType: 'application/json')
+        def newAccount = restClient.post(path: '/api/account', body: json2 as String, requestContentType: 'application/json')
 
         when:
-        def resp = restClient.get(path: "/api/accountRest/${newAccount.data.id}")
+        def resp = restClient.get(path: "/api/account/${newAccount.data.id}")
 
         then:
         resp.status == 200
@@ -78,7 +78,7 @@ class AccountFunctionalSpec extends GebSpec {
         resp.data.name == 'NewUser'
 
         when:
-        def resp2 = restClient.get(path: "/api/accountRest/${newAccount.data.handle}")
+        def resp2 = restClient.get(path: "/api/account/${newAccount.data.handle}")
 
         then:
         resp2.status == 200
