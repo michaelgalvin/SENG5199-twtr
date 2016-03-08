@@ -6,6 +6,7 @@ class UrlMappings {
             }
         }
         "/api/accountRest"(resources:"accountRest")
+        "/api/message"(resources:"messageRest")
 
         "/"(view:"/index")
         "500"(view:'/error')

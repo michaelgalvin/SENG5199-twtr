@@ -13,12 +13,12 @@ class MessageRestController extends RestfulController {
         super(Message)
     }
 
-    def show() {
-        render "There are " + Message.count() + " messages in the DB.<br/>"
-        render "Messages are:<br/>"
-        def message = Message.list()
-        message.each { render it.text + " " + it.author.Id + "<br/>" }
-    }
+//    def show() {
+//        render "There are " + Message.count() + " messages in the DB.<br/>"
+//        render "Messages are:<br/>"
+//        def message = Message.list()
+//        message.each { render it.text + " " + it.author.Id + "<br/>" }
+//    }
 
     @Transactional
     def save(Message message) {
