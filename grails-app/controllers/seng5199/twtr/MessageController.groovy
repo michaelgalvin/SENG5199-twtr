@@ -6,6 +6,8 @@ import grails.transaction.Transactional
 
 class MessageController extends RestfulController {
 
+    Class<Message> resource
+
     def allowedMethods = [save: 'POST']
     static responseFormats = ['json', 'xml']
 
@@ -23,7 +25,7 @@ class MessageController extends RestfulController {
     @Override
     def show() {
         def account = Account.get(params.id)
-        def messages = Message.findAll("from Message where author=${account.id} order by date_created", [max: 10])
+        def messages = Message.findAll("from Message where author=${account.id} order by date_created", [max: Math.min(params.int('max') ?: 10, 100)])
 
         if (account) {
             render messages as JSON
@@ -32,13 +34,25 @@ class MessageController extends RestfulController {
         }
     }
 
-    @Transactional
-    def save(Message message) {
-        if (message.hasErrors()) {
-            respond message.errors
-        } else {
-            message.save flush: true
+////    @Transactional
+//    def save() {
+//        def author
+//        if (message.author.handle)
+//            author = Account.findByHandle(message.author.handle)
+//        else if (message.author.id && (message.author.id as String).isNumber())
+//            author = Account.get(message.author.id)
+//
+//        if (author == null) {
+//            // every message must have an author
+//            respond "You must log in first before you can post a message."
+//        }
+//
+//        if (message.hasErrors()) {
+//            respond message.errors
+//        } else {
+//            message.author = author
+//            message.save flush: true
+//        }
+//    }
 
-        }
-    }
 }

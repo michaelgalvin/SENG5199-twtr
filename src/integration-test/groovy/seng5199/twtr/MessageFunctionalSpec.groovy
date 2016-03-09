@@ -22,39 +22,52 @@ class MessageFunctionalSpec extends GebSpec {
         restClient = new RESTClient(baseUrl)
     }
 
-    def 'M1: Create a REST endpoint will create a Message given a specified Account id or handle and message text'() {
+    def 'M1: Create a REST endpoint will create a Message given a specified Account id and message text'() {
         given:
         Account acc = new Account(handle: 'myHandle', email: 'my@umn.edu', password: '1234567Ad', name: 'Leopold')
         def json = acc as JSON
 
-        when:
+        when: "creating a new account"
         def resp = restClient.post(path: '/api/account', body: json as String, requestContentType: 'application/json')
 
-        then:
+        then: "id of created account should match"
         resp.status == 201
         resp.data.id
-        resp.data.handle == 'myHandle'
-        resp.data.email == 'my@umn.edu'
-        resp.data.password == '1234567Ad'
-        resp.data.name == 'Leopold'
 
-        when: "given a specified Account id"
-        Message message = new Message(text: 'Hi', author: [id: resp.data.id])
-        def json2 = message as JSON
+
+        when: "given a message and a specific Account with only the Account id"
+        Message message1 = new Message(text: 'Hi', author: new Account(id: resp.data.id))
+        def json2 = message1 as JSON
         def resp2 = restClient.post(path: '/api/message', body: json2 as String, requestContentType: 'application/json')
 
         then:
-        resp2.status == 200
-
-//        when:"given a specified Account handle"
-//        Message message2 = new Message(text: 'Hi', author:[handle:resp.data.handle])
-//        def json3 = message2 as JSON
-//        def resp3 = restClient.post(path: '/api/message', body: json3 as String, requestContentType: 'application/json')
-//
-//        then:
-//        resp3.status == 200
+        resp2.status == 201
+        resp2.data.id
     }
 
+//    def 'M1 (Part2): Create a REST endpoint will create a Message given a specified Account handle and message text'() {
+//        given:
+//        Account acc2 = new Account(handle: 'MagdalenaHandle', email: 'cgelkrl@umn.edu', password: '1234567Ad', name: 'Alan')
+//        def json3 = acc2 as JSON
+//
+//        when: "creating a new account"
+//        def resp3 = restClient.post(path: '/api/account', body: json3 as String, requestContentType: 'application/json')
+//
+//        then: "handle of created account should match"
+//        resp3.status == 201
+//        resp3.data.handle
+//
+//
+//        when: "given a message and a specific Account with only the Account handle"
+//        Message message2 = new Message(text: 'Hola mundo', author: new Account(id: resp3.data.handle))
+//        def json4 = message2 as JSON
+//        def resp4 = restClient.post(path: '/api/message', body: json4 as String, requestContentType: 'application/json')
+//
+//        then:
+//        resp4.status == 201
+//        resp4.data.hanlde
+//    }
+//
     def 'M2: Return an error response from the create Message endpoint if user is not found (data-driven test)'() {
         given: "Create an Account object, but don't post it. So Message should not be able to find that user"
         Account notFound = new Account(handle: 'notFoundHandle', email: 'nfh@umn.edu', password: '1234567Ad', name: 'UNF')
@@ -93,13 +106,19 @@ class MessageFunctionalSpec extends GebSpec {
 
     def 'M3: Create a REST endpoint that will return the most recent messages for an Account.'() {
         //The endpoint must honor a limit parameter that caps the number of responses. The default limit is 10. (data-driven test)
-        given:"Get account #1, then get their messages"
-        def M3acc  = restClient.get(path: '/api/account/1')
+        given: "Get account #1, then get their messages"
+        def M3acc = restClient.get(path: '/api/account/1')
 
-        when:
+        when:"Should default to 10"
         def M3resp = restClient.get(path: "/api/message/${M3acc.data.id}")
 
         then:
         M3resp.data.size == 10
+
+        when:"Should accept a limit"
+        def M3resp2 = restClient.get(path: "/api/message/1", query:[max:'12'])
+
+        then:
+        M3resp2.data.size == 12
     }
 }
