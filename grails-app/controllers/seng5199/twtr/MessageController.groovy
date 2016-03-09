@@ -18,14 +18,14 @@ class MessageController extends RestfulController {
     @Override
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        def messages = Message.findAll("from Message order by date_created", [max: params.max])
+        def messages = Message.findAll("from Message order by date_created", [max: params.max, offset: params.offset])
         render messages as JSON
     }
 
     @Override
     def show() {
         def account = Account.get(params.id)
-        def messages = Message.findAll("from Message where author=${account.id} order by date_created", [max: Math.min(params.int('max') ?: 10, 100)])
+        def messages = Message.findAll("from Message where author=${account.id} order by date_created", [max: Math.min(params.int('max') ?: 10, 100), offset: params.offset])
 
         if (account) {
             render messages as JSON

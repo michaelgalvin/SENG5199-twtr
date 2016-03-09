@@ -109,16 +109,34 @@ class MessageFunctionalSpec extends GebSpec {
         given: "Get account #1, then get their messages"
         def M3acc = restClient.get(path: '/api/account/1')
 
-        when:"Should default to 10"
+        when: "Should default to 10"
         def M3resp = restClient.get(path: "/api/message/${M3acc.data.id}")
 
         then:
         M3resp.data.size == 10
 
-        when:"Should accept a limit"
-        def M3resp2 = restClient.get(path: "/api/message/1", query:[max:'12'])
+        when: "Should accept a limit"
+        def M3resp2 = restClient.get(path: "/api/message/${M3acc.data.id}", query: [max: '12'])
 
         then:
         M3resp2.data.size == 12
     }
+
+    def 'M4: Support an offset parameter into the recent Messages endpoint to provide paged responses.'() {
+        given:
+        def M4resp = restClient.get(path: "/api/message/1", query: [max: '2', offset: '5'])
+
+        when:
+        M4resp
+
+        then:
+        M4resp.data.size == 2
+        M4resp.data.find { it -> it.id == 6 }
+        M4resp.data.find { it -> it.id == 7 }
+    }
+
+//    def 'M5: Create a REST endpoint that will search for messages containing a specified search term.'() {
+//        //Each response value will be a JSON object containing the Message details (text, date) as well as the Account (handle)
+//
+//    }
 }
