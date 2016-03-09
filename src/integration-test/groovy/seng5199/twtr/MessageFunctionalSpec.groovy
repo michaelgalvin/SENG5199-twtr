@@ -38,8 +38,8 @@ class MessageFunctionalSpec extends GebSpec {
         resp.data.password == '1234567Ad'
         resp.data.name == 'Leopold'
 
-        when:"given a specified Account id"
-        Message message = new Message(text: 'Hi', author:[id:resp.data.id])
+        when: "given a specified Account id"
+        Message message = new Message(text: 'Hi', author: [id: resp.data.id])
         def json2 = message as JSON
         def resp2 = restClient.post(path: '/api/message', body: json2 as String, requestContentType: 'application/json')
 
@@ -53,5 +53,45 @@ class MessageFunctionalSpec extends GebSpec {
 //
 //        then:
 //        resp3.status == 200
+    }
+
+    def 'M2: Return an error response from the create Message endpoint if user is not found (data-driven test)'() {
+        given: "Create an Account object, but don't post it. So Message should not be able to find that user"
+        Account notFound = new Account(handle: 'notFoundHandle', email: 'nfh@umn.edu', password: '1234567Ad', name: 'UNF')
+
+        when:
+        Message notFoundMessage = new Message(text: 'Test tweet', author: [id: notFound.id])
+        def notFoundJSON = notFoundMessage as JSON
+        restClient.post(path: '/api/message', body: notFoundJSON as String, requestContentType: 'application/json')
+
+        then:
+        HttpResponseException error = thrown(HttpResponseException)
+        error.statusCode == 422
+    }
+
+    def 'M2(part2): Return an error response from the create Message endpoint if message text is not valid (data-driven test)'() {
+        given:
+        Account M2acc = new Account(handle: 'handle', email: 'handle@umn.edu', password: '1234567Ad', name: 'Erik')
+        def M2json = M2acc as JSON
+
+        when:
+        def M2resp = restClient.post(path: '/api/account', body: M2json as String, requestContentType: 'application/json')
+
+        then:
+        M2resp.status == 201
+        M2resp.data.id
+
+        when: "Pass too many characters to the text of a Message class"
+        Message M2message = new Message(text: 'a' * 41, author: [id: M2resp.data.id])
+        def M2json2 = M2message as JSON
+        restClient.post(path: '/api/message', body: M2json2 as String, requestContentType: 'application/json')
+
+        then:
+        HttpResponseException error = thrown(HttpResponseException)
+        error.statusCode == 422
+    }
+
+    def 'M3: Create a REST endpoint that will return the most recent messages for an Account.'() {
+        //The endpoint must honor a limit parameter that caps the number of responses. The default limit is 10. (data-driven test)
     }
 }

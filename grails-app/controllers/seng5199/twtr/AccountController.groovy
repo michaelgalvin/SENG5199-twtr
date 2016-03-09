@@ -2,11 +2,11 @@ package seng5199.twtr
 
 import grails.rest.RestfulController
 
-class AccountRestController extends RestfulController {
+class AccountController extends RestfulController {
     def allowedMethods = [save: 'POST', delete: ['POST', 'DELETE']]
     static responseFormats = ['json', 'xml']
 
-    AccountRestController() {
+    AccountController() {
         super(Account)
     }
 
