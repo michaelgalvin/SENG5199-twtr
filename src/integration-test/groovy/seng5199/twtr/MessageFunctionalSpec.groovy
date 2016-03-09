@@ -93,5 +93,13 @@ class MessageFunctionalSpec extends GebSpec {
 
     def 'M3: Create a REST endpoint that will return the most recent messages for an Account.'() {
         //The endpoint must honor a limit parameter that caps the number of responses. The default limit is 10. (data-driven test)
+        given:"Get account #1, then get their messages"
+        def M3acc  = restClient.get(path: '/api/account/1')
+
+        when:
+        def M3resp = restClient.get(path: "/api/message/${M3acc.data.id}")
+
+        then:
+        M3resp.data.size == 10
     }
 }
