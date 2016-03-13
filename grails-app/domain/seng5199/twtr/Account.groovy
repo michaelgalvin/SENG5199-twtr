@@ -5,6 +5,8 @@ class Account {
     String email
     String password
     String name
+    Set<Account> following
+    Set<Account> followers
 
     static hasMany = [following: Account, followers: Account]
 

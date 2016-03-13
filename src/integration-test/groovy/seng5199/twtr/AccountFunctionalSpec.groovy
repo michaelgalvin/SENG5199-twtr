@@ -24,9 +24,10 @@ class AccountFunctionalSpec extends GebSpec {
         restClient = new RESTClient(baseUrl)
     }
 
+
     def 'A1: Create a REST endpoint that receives JSON data to create an Account'() {
         given:
-        def acc = new Account(handle: 'exitedToGraduate', email: 'grad@umn.edu', password: '1234567Ad', name: 'Graduat')
+        def acc = new Account(handle: 'excitedToGraduate', email: 'grad@umn.edu', password: '1234567Ad', name: 'Graduate')
         def json = acc as JSON
 
         when:
@@ -35,10 +36,10 @@ class AccountFunctionalSpec extends GebSpec {
         then:
         resp.status == 201
         resp.data.id
-        resp.data.handle == 'exitedToGraduate'
+        resp.data.handle == 'excitedToGraduate'
         resp.data.email == 'grad@umn.edu'
         resp.data.password == '1234567Ad'
-        resp.data.name == 'Graduat'
+        resp.data.name == 'Graduate'
     }
 
     def 'A2: Return an error response from the create Account endpoint if the account values are invalid #description'() {
@@ -87,4 +88,40 @@ class AccountFunctionalSpec extends GebSpec {
         resp2.data.email == 'new@umn.edu'
         resp2.data.name == 'NewUser'
     }
+    def 'F1: Create a REST endpoint that will allow one account to follow another'(){
+        //http://localhost:8080/api/account/1/follow/?fid=2
+        given:
+        def account1 = new Account(handle: 'FinishwithSchool', email: 'zdl@umn.edu', password: '1234567Ad', name: 'Alan')
+        def jsonAcc1 = account1 as JSON
+        def rAcc1 = restClient.post(path: '/api/account', body: jsonAcc1 as String, requestContentType: 'application/json')
+        account1.id = rAcc1.data.id
+        jsonAcc1 = null
+
+        def account2 = new Account(handle: 'ReadytoGRaduate', email: 'crz@umn.edu', password: '1234567Ad', name: 'Alicia')
+        def jsonAcc2 = account2 as JSON
+        def rAcc2 = restClient.post(path: '/api/account', body: jsonAcc2 as String, requestContentType: 'application/json')
+        account2.id = rAcc2.data.id
+        jsonAcc2 = null
+
+        when:
+        restClient.post(path: "/api/account/follow/${account1.id}?fid=${account2.id}", body: jsonAcc1 as String, requestContentType: 'application/json')
+        restClient.post(path: "/api/account/follow/${account2.id}?fid=${account1.id}", body: jsonAcc2 as String, requestContentType: 'application/json')
+
+        then:
+        account2.followers.find { it.handle == account1.handle }
+        account1.followers.find { it.handle == account2.handle }
+    }
+    def 'F2: For the endpoint created for requirement A3, add properties for total counts of follwers and following for the account.'(){
+
+    }
+//
+//    def 'F3: Add an endpoint to get the followers for an account. '(){
+//        //'This will return the details about the followers (handle, name, email, id).
+//        // Add the limit and offset logic implemented for messages to this endpoint.
+//    }
+//
+//    def 'F4: Create a ‘feed’ endpoint which will return the most recent messages by Accounts being followed by an Account.'(){
+//        //Include a response limit parameter. Include a parameter to only look for messages after a specified date.
+//    }
+
 }

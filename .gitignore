@@ -1,8 +1,10 @@
 Thumbs.db
+.asscache
 .DS_Store
 .gradle
 build/
 classes/
+logs/
 .idea
 *.iml
 *.ipr

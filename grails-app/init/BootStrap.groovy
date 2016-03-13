@@ -29,7 +29,7 @@ class BootStrap {
         new seng5199.twtr.Message(author: 2, text: 'Hi 6').save()
         new seng5199.twtr.Message(author: 2, text: 'Hi 7').save()
         new seng5199.twtr.Message(author: 2, text: 'Hi 8').save()
-        new seng5199.twtr.Message(author: 2, text: 'Hi 9').save()
+        new seng5199.twtr.Message(author: 2, text: 'Save the date 9').save()
         new seng5199.twtr.Message(author: 2, text: 'Hi 10').save()
         new seng5199.twtr.Message(author: 2, text: 'Hi 11').save()
         new seng5199.twtr.Message(author: 2, text: 'Hi 12').save()
