@@ -13,8 +13,9 @@ class UrlMappings {
         "/api/account/follow/$id?"(controller: "account", action: "follow")
         "/api/account/following/$id?"(controller: "account", action: "following")
         "/api/message"(resources: "message")
-
+        
         "/api/message/search/"(controller: "message", action: "search")
+
         "/"(view: "/index")
         "500"(view: '/error')
         "404"(view: '/notFound')

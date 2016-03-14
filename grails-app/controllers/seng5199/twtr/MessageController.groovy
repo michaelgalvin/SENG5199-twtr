@@ -17,9 +17,15 @@ class MessageController extends RestfulController {
         super(Message)
     }
 
-    def accnt() {
+    @Override
+    def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        params.offset = params.max
+        def messages = Message.findAll("from Message order by date_created", [max: params.max, offset: params.offset])
+        render messages as JSON
+    }
+
+    def accnt(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
 
         if (!params.id) {
             response.status = 400
@@ -49,7 +55,8 @@ class MessageController extends RestfulController {
     }
 
 
-    def search() {
+    def search(Integer max) {
+
         params.max = Math.min(max ?: 10, 100)
 
         def query = params.q

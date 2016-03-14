@@ -138,10 +138,10 @@ class MessageFunctionalSpec extends GebSpec {
 
     def 'M5: Create a REST endpoint that will search for messages containing a specified search term.'() {
         //Each response value will be a JSON object containing the Message details (text, date) as well as the Account (handle)
-        given: 'Existing message by groovieNewbie2 with the text: \'Save the date 9\''
+        given: 'Existing message by groovieNewbie2 with the text: \'Save the date\''
 
         when:
-        def M5resp = restClient.get(path: "/api/message/search", query: [q: 'Save'])
+        def M5resp = restClient.get(path: "/api/message/search", query: [q: 'Save', max: '2', offset: '5'])
 
         then:
         M5resp.status == 200
