@@ -4,7 +4,6 @@ import grails.gorm.*
 import grails.converters.JSON
 import grails.rest.RestfulController
 import grails.transaction.Transactional
-//import groovyx.net.http.HttpResponseException
 
 class MessageController extends RestfulController {
 
@@ -18,15 +17,9 @@ class MessageController extends RestfulController {
         super(Message)
     }
 
-//    @Override
-//    def search(Integer max) {
-//        params.max = Math.min(max ?: 10, 100)
-//        def messages = Message.findAll("from Message order by date_created", [max: params.max, offset: params.offset])
-//        render messages as JSON
-//    }
-
-
     def accnt() {
+        params.max = Math.min(max ?: 10, 100)
+        params.offset = params.max
 
         if (!params.id) {
             response.status = 400
@@ -57,6 +50,7 @@ class MessageController extends RestfulController {
 
 
     def search() {
+        params.max = Math.min(max ?: 10, 100)
 
         def query = params.q
         def messages

@@ -5,7 +5,12 @@ class BootStrap {
     def init = { servletContext ->
         // Define some intial users
         new Account(handle: 'groovyNewbie', email: 'newb@gmail.com', password: '12345678aH', name: 'Mike').save()
-        new Account(handle: 'groovyNewbie2', email: 'newb@gmail2.com', password: '12345678aH', name: 'Newb').save()
+        new Account(handle: 'groovyNewbie2', email: 'newby2@gmail.com', password: '12345678aH', name: 'Newb').save()
+        new Account(handle: 'PossessWeekly2', email: 'finallyPossessed@gmail.com',password: '12345678aH', name: 'Toro').save()
+        new Account(handle: 'TheNerd2', email: 'finalNerd@gmail.com',password: '12345678aH', name: 'Hope').save()
+        new Account(handle: 'Posse2', email: '123r@gmail.com',password: '12345678aH', name: 'Toomuch').save()
+        new Account(handle: 'Nerd2', email: '234hn@gmail.com',password: '12345678aH', name: 'totoro').save()
+
 
         new seng5199.twtr.Message(author: 1, text: 'Hello 1').save()
         new seng5199.twtr.Message(author: 1, text: 'Hello 2').save()
@@ -25,7 +30,7 @@ class BootStrap {
         new seng5199.twtr.Message(author: 2, text: 'Hi 2').save()
         new seng5199.twtr.Message(author: 2, text: 'Hi 3').save()
         new seng5199.twtr.Message(author: 2, text: 'Hi 4').save()
-        new seng5199.twtr.Message(author: 2, text: 'Hi 5').save()
+        new seng5199.twtr.Message(author: 2, text: 'abc defghigklmnop').save()
         new seng5199.twtr.Message(author: 2, text: 'Hi 6').save()
         new seng5199.twtr.Message(author: 2, text: 'Hi 7').save()
         new seng5199.twtr.Message(author: 2, text: 'Hi 8').save()

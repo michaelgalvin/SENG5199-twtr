@@ -11,6 +11,7 @@ class UrlMappings {
 
         "/api/account"(resources: "account")
         "/api/account/follow/$id?"(controller: "account", action: "follow")
+        "/api/account/following/$id?"(controller: "account", action: "following")
         "/api/message"(resources: "message")
 
         "/api/message/search/"(controller: "message", action: "search")

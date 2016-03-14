@@ -2,6 +2,7 @@ package seng5199.twtr
 
 import grails.rest.RestfulController
 import grails.converters.JSON
+import groovy.json.JsonOutput
 
 class AccountController extends RestfulController {
     def allowedMethods = [save: 'POST', delete: ['POST', 'DELETE']]
@@ -22,28 +23,72 @@ class AccountController extends RestfulController {
     }
 
     def follow() {
-        if (!params.id || !params.fid) {
+
+        if (!params.id) {
             response.status = 422
             return
         }
 
         def userId = (params.id as String).isNumber()
-        def toFollowId = (params.fid as String).isNumber()
 
-        if (!userId || !toFollowId) {
+        if (!userId) {
             response.status = 404
             return
         }
 
         def user = Account.get(params.id)
-        def toFollow = Account.get(params.fid)
+
+        if (!user) {
+            response.status = 404
+            return
+        }
+
+        def toFollowId
+        def toFollow
+
+        if (params.fid && (params.fid as String).isNumber()) {
+            toFollowId = Account.get(params.fid)
+            toFollow = Account.get(params.fid)
+        }
+
+        if (!toFollowId || !toFollow) {
+            response.status = 200
+            def qtyResponse = JSON.parse('{ "followers": "' + user.followers.size() + '"}')
+            respond qtyResponse
+        }
+
         toFollow.addToFollowers(user)
+        toFollow.totalFollowers++
         toFollow.save()
         user.addToFollowing(toFollow)
+        user.totalFollowing++
         user.save()
 
         response.status = 200
         respond user
+    }
+
+    def following() {
+
+        if (!params.id) {
+            response.status = 422
+            return
+        }
+
+        def user
+        if ((params.id as String).isNumber())
+            user = Account.get(params.id)
+
+        if (!user) {
+            response.status = 404
+            return
+        }
+
+        def criteria = Account.createCriteria()
+        ArrayList<Account> following = criteria.list {
+            following { eq("id", user.id) }
+        }
+        render following as JSON
     }
 
     def save(Account account) {
