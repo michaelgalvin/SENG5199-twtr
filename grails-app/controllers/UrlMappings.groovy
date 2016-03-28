@@ -1,14 +1,23 @@
 class UrlMappings {
 
     static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
+
+
+        "/api/$controller/$action?/$id?(.$format)?" {
             constraints {
-                // apply constraints here
             }
+            //message(sort:'date_created', order:'desc')
         }
 
-        "/"(view:"/index")
-        "500"(view:'/error')
-        "404"(view:'/notFound')
+        "/api/account"(resources: "account")
+        "/api/account/follow/$id?"(controller: "account", action: "follow")
+        "/api/account/following/$id?"(controller: "account", action: "following")
+        "/api/message"(resources: "message")
+        
+        "/api/message/search/"(controller: "message", action: "search")
+
+        "/"(view: "/index")
+        "500"(view: '/error')
+        "404"(view: '/notFound')
     }
 }
