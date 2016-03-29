@@ -5,13 +5,14 @@ import grails.converters.JSON
 import grails.test.mixin.integration.Integration
 import groovyx.net.http.HttpResponseException
 import groovyx.net.http.RESTClient
+import jdk.nashorn.internal.ir.annotations.Ignore
 import spock.lang.Shared
 import spock.lang.Stepwise
 
 /**
  * Created by galvi024 on 2/26/16.
  */
-
+@Ignore
 @Integration
 @Stepwise
 class AccountFunctionalSpec extends GebSpec {

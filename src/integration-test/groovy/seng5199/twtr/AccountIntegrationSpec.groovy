@@ -5,6 +5,7 @@ import grails.test.mixin.integration.Integration
 import grails.transaction.*
 import spock.lang.*
 
+@Ignore
 @Integration
 @Rollback
 class AccountIntegrationSpec extends Specification {
