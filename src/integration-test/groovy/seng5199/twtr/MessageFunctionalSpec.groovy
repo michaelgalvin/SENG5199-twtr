@@ -5,6 +5,7 @@ import grails.converters.JSON
 import grails.test.mixin.integration.Integration
 import groovyx.net.http.HttpResponseException
 import groovyx.net.http.RESTClient
+import spock.lang.Ignore
 import spock.lang.Shared
 import spock.lang.Stepwise
 
@@ -12,6 +13,7 @@ import spock.lang.Stepwise
  * Created by galvi024 on 2/26/16.
  */
 
+@Ignore
 @Integration
 @Stepwise
 class MessageFunctionalSpec extends GebSpec {
