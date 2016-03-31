@@ -1,8 +1,14 @@
 import seng5199.twtr.Account
+import seng5199.twtr.AccountRole
+import seng5199.twtr.Role
 
 class BootStrap {
 
     def init = { servletContext ->
+        def admin = new Account(handle: 'admin', password: '12345678aH', email: 'admin@admin.com', name: "Admin").save(flush: true, failOnError: true)
+        def role = new Role(authority: 'ROLE_READ').save(flush: true, failOnError: true)
+        new AccountRole(user: admin, role: role).save(flush: true, failOnError: true)
+
         // Define some intial users
         new Account(handle: 'groovyNewbie', email: 'newb@gmail.com', password: '12345678aH', name: 'Mike').save()
         new Account(handle: 'groovyNewbie2', email: 'newby2@gmail.com', password: '12345678aH', name: 'Newb').save()

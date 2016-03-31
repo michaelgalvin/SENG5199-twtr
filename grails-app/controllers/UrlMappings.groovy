@@ -13,8 +13,10 @@ class UrlMappings {
         "/api/account/follow/$id?"(controller: "account", action: "follow")
         "/api/account/following/$id?"(controller: "account", action: "following")
         "/api/message"(resources: "message")
-        
+
         "/api/message/search/"(controller: "message", action: "search")
+
+        "/initadmin"(controller:'account',action:'initAdmin')
 
         "/"(view: "/index")
         "500"(view: '/error')

@@ -12,13 +12,16 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 ]
 
 grails.plugin.springsecurity.rest.token.storage.useGorm = true
-grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName = 'grails.security.AuthenticationToken'
+grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName = 'seng5199.twtr.AuthenticationToken'
 grails.plugin.springsecurity.rest.token.validation.useBearerToken = false
 grails.plugin.springsecurity.rest.token.validation.headerName = 'X-Auth-Token'
 
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'grails.security.User'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'grails.security.UserRole'
-grails.plugin.springsecurity.authority.className = 'grails.security.Role'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'seng5199.twtr.Account'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'seng5199.twtr.AccountRole'
+grails.plugin.springsecurity.authority.className = 'seng5199.twtr.Role'
+
+grails.plugin.springsecurity.userLookup.usernamePropertyName = 'handle'
+//grails.plugin.springsecurity.password.algorithm ='MD5'
 
 grails.plugin.springsecurity.securityConfigType = 'InterceptUrlMap'
 grails.plugin.springsecurity.interceptUrlMap = [
