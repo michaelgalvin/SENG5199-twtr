@@ -5,7 +5,7 @@ import grails.converters.JSON
 import grails.test.mixin.integration.Integration
 import groovyx.net.http.HttpResponseException
 import groovyx.net.http.RESTClient
-import jdk.nashorn.internal.ir.annotations.Ignore
+import spock.lang.Ignore
 import spock.lang.Shared
 import spock.lang.Stepwise
 

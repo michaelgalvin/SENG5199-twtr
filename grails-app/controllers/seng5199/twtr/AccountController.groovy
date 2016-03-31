@@ -101,4 +101,17 @@ class AccountController extends RestfulController {
         respond account
     }
 
+//    def initAdmin(){
+//        def pw='12345678pP'
+////        Message.executeUpdate("delete Message where id=id")
+////        Account.executeUpdate("delete Account where id=id")
+//        def admin = new Account([handle:'Admin',name:'admin',password:pw,email:'admin@admin.com'])
+//        def role = new Role(authority:'ROLE_READ')
+//        def ac = new AccountRole(user:admin,role:role)
+//        admin.save()
+//        role.save()
+//        ac.save()
+//        def ss=Account.list()
+//        respond ss
+//    }
 }
