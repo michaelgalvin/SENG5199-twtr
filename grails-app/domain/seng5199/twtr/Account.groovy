@@ -30,7 +30,7 @@ class Account {
     boolean passwordExpired = false
 
     Set<Role> getAuthorities() {
-        UserRole.findAllByUser(this)*.role
+        AccountRole.findAllByUser(this)*.role
     }
 
     def beforeInsert() {
