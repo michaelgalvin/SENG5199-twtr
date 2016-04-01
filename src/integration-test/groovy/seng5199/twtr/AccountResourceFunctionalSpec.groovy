@@ -1,18 +1,17 @@
 package seng5199.twtr
 
-import geb.spock.GebSpec
 import grails.converters.JSON
 import grails.test.mixin.integration.Integration
 import grails.transaction.Rollback
 import groovyx.net.http.HttpResponseException
 import groovyx.net.http.RESTClient
 import spock.lang.Shared
+import spock.lang.Specification
 import spock.lang.Stepwise
 
 @Integration
 @Stepwise
-@Rollback
-class AccountResourceFunctionalSpec extends GebSpec {
+class AccountResourceFunctionalSpec extends Specification {
 
     RESTClient restClient
 

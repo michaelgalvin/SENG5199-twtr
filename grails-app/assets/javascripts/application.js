@@ -6,9 +6,15 @@
 // to create separate JavaScript files as needed.
 //
 //= require jquery-2.1.3.js
-//= require_tree .
+//= require ../bower/bootstrap/boostrap.js
+//= require ../bower/bootstrap/dist/css.boostrap-theme.js
+//= require ../bower/bootstrap/bootstrap.js
+//= require ../bower/angular/angular.js
+//= encoding UTF-8
 //= require_self
+//= require_tree app
 
+angular.module('app' []);
 if (typeof jQuery !== 'undefined') {
     (function($) {
         $('#spinner').ajaxStart(function() {
