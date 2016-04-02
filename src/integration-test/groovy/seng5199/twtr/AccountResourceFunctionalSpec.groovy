@@ -1,5 +1,6 @@
 package seng5199.twtr
 
+import geb.spock.GebSpec
 import grails.converters.JSON
 import grails.test.mixin.integration.Integration
 import grails.transaction.Rollback
@@ -7,16 +8,17 @@ import groovyx.net.http.HttpResponseException
 import groovyx.net.http.RESTClient
 import spock.lang.Shared
 import spock.lang.Specification
-import spock.lang.Stepwise
+
 
 @Integration
-@Stepwise
-class AccountResourceFunctionalSpec extends Specification {
+
+class AccountResourceFunctionalSpec extends GebSpec {
 
     RESTClient restClient
 
     @Shared
     def token
+    def baseUrl = 'http://localhost:8080'
 
     def setup() {
         restClient = new RESTClient(baseUrl)
@@ -42,7 +44,7 @@ class AccountResourceFunctionalSpec extends Specification {
         then:
         response.status == 200
         response.data.username == 'admin'
-        response.data.roles == ['ROLE_READ']
+        response.data.roles[0] == 'ROLE_READ'
         //noinspection GroovyDoubleNegation
         !!(token = response.data.access_token)
     }
