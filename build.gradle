@@ -24,15 +24,16 @@ group "seng5199.twtr"
 
 apply plugin: "spring-boot"
 apply plugin: "war"
-apply plugin: "asset-pipeline"
-apply plugin: 'eclipse'
-apply plugin: 'idea'
 apply plugin: "org.grails.grails-web"
 apply plugin: "org.grails.grails-gsp"
+apply plugin: "asset-pipeline"
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
 
 ext {
-    grailsVersion = project.grailsVersion
-    gradleWrapperVersion = project.gradleWrapperVersion
+  grailsVersion = project.grailsVersion
+  gradleWrapperVersion = project.gradleWrapperVersion
 }
 
 //assets {
@@ -47,10 +48,10 @@ repositories {
 }
 
 dependencyManagement {
-    imports {
-        mavenBom "org.grails:grails-bom:$grailsVersion"
-    }
-    applyMavenExclusions false
+  imports {
+    mavenBom "org.grails:grails-bom:$grailsVersion"
+  }
+  applyMavenExclusions false
 }
 
 dependencies {
@@ -92,23 +93,28 @@ dependencies {
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = gradleWrapperVersion
+}
+
 bower {
 
-    'bootstrap'('3.3.x') {
-        source 'dist/css/bootstrap.css' >> 'css/'
-        source 'dist/css/bootstrap-theme.css' >> 'css/'
-        source 'dist/fonts/**' >> 'fonts/'
-        source 'dist/js/bootstrap.js'
-        excludes 'jquery'
-    }
+  'bootstrap'('3.3.x') {
+    source 'dist/css/bootstrap.css' >> 'css/'
+    source 'dist/css/bootstrap-theme.css' >> 'css/'
+    source 'dist/fonts/**' >> 'fonts/'
+    source 'dist/js/bootstrap.js'
+    excludes 'jquery'
+  }
 
-    'angular'('1.5.x') {
-        source 'angular.js'
-        source 'angular-csp.css'
-    }
+  'angular'('1.5.x') {
+    source 'angular.js'
+    source 'angular-csp.css'
+  }
 
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = gradleWrapperVersion
+assets {
+    minifyJs = true
+    minifyCss = true
 }
