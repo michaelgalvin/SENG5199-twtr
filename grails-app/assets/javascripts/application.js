@@ -6,18 +6,16 @@
 // to create separate JavaScript files as needed.
 //
 //= require jquery-2.1.3.js
-//= require ../bower/bootstrap/boostrap.js
-//= require ../bower/bootstrap/dist/css.boostrap-theme.js
-//= require ../bower/bootstrap/bootstrap.js
+//= require ../bower/bootstrap/dist/js/boostrap.js
+//= require ../bower/bootstrap/dist/css/boostrap-theme.js
 //= require ../bower/angular/angular.js
 //= encoding UTF-8
 //= require_self
 //= require_tree app
 
-// Create the angular application called 'app'
-angular.module('app', []);
+//= require app/controllers/welcomeController.js
+//= require app/controllers/searchController.js
 
-// Define a controller called 'welcomeController'
-angular.module('app').controller('welcomeController', function($scope) {
-    $scope.greeting = 'Hello Stranger'
-});
+
+// Create the angular application called 'app'
+angular.module("app", []); //"ngRoute"

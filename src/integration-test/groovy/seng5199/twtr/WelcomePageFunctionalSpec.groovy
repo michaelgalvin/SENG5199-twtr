@@ -11,14 +11,13 @@ import spock.lang.Ignore
 
 
 @Integration
-
 class WelcomePageFunctionalSpec extends GebSpec{
     def 'welcome page displays welcome message'() {
         when:
         go '/'
 
         then: 'Static welcome displayed properly'
-        $('h1').first().text() == 'Welcome to the sample Grails 3 Angular App'
+        $('h1').first().text() == 'TWTR: small bird noises'
 
         and: 'Angular generated test displayed properly'
         $('h2').first().text() == 'Hello Stranger'
