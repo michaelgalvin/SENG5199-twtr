@@ -14,13 +14,10 @@
 //= require_self
 //= require_tree app
 
-angular.module('app' []);
-if (typeof jQuery !== 'undefined') {
-    (function($) {
-        $('#spinner').ajaxStart(function() {
-            $(this).fadeIn();
-        }).ajaxStop(function() {
-            $(this).fadeOut();
-        });
-    })(jQuery);
-}
+// Create the angular application called 'app'
+angular.module('app', []);
+
+// Define a controller called 'welcomeController'
+angular.module('app').controller('welcomeController', function($scope) {
+    $scope.greeting = 'Hello Stranger'
+});

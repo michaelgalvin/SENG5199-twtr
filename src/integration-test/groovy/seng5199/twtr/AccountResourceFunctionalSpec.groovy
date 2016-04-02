@@ -1,17 +1,15 @@
 package seng5199.twtr
 
+import geb.spock.GebSpec
 import grails.converters.JSON
 import grails.test.mixin.integration.Integration
-import grails.transaction.Rollback
 import groovyx.net.http.HttpResponseException
 import groovyx.net.http.RESTClient
-import spock.lang.Shared
-import spock.lang.Specification
-import spock.lang.Stepwise
+import spock.lang.*
 
 @Integration
 @Stepwise
-class AccountResourceFunctionalSpec extends Specification {
+class AccountResourceFunctionalSpec extends GebSpec {
 
     RESTClient restClient
 
@@ -47,7 +45,7 @@ class AccountResourceFunctionalSpec extends Specification {
         !!(token = response.data.access_token)
     }
 
-    def 'using token access to account endpoint allowed'() {
+    def 'using token access to restaurants endpoint allowed'() {
         when:
         def response = restClient.get(path: '/api/account', headers: ['X-Auth-Token': token])
 
