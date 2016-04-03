@@ -17,11 +17,11 @@
     <div class="container">
         <div class="navbar-header">
             %{--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"--}%
-                    %{--aria-expanded="false" aria-controls="navbar">--}%
-                %{--<span class="sr-only">Toggle navigation</span>--}%
-                %{--<span class="icon-bar"></span>--}%
-                %{--<span class="icon-bar"></span>--}%
-                %{--<span class="icon-bar"></span>--}%
+            %{--aria-expanded="false" aria-controls="navbar">--}%
+            %{--<span class="sr-only">Toggle navigation</span>--}%
+            %{--<span class="icon-bar"></span>--}%
+            %{--<span class="icon-bar"></span>--}%
+            %{--<span class="icon-bar"></span>--}%
             %{--</button>--}%
             <a class="navbar-brand" href="#">TWTR</a>
         </div>
@@ -41,23 +41,16 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <h1>TWTR: small bird noises</h1>
-
         <p>This is a sharp app.</p>
     </div>
 
+    <div ng-view></div>
 
-    <div ng-controller="welcomeController">
-        <h2>{{welcomeGreeting}}</h2>
+    <div class="input-group">
+        <input type="text" ng-model="q"/>
     </div>
 
-    <div ng-controller="searchController">
-        <h2>{{searchGreeting}}</h2>
-
-        <div class="input-group">
-            <input type="text" ng-model="q"/>
-        </div>
-
-    </div>
+</div>
 
 </div>
 </body>
