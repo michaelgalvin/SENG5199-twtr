@@ -11,7 +11,6 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 
 ]
 
-grails.plugin.springsecurity.rest.token.storage.useGorm = true
 grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName = 'seng5199.twtr.AuthenticationToken'
 grails.plugin.springsecurity.rest.token.validation.useBearerToken = false
 grails.plugin.springsecurity.rest.token.validation.headerName = 'X-Auth-Token'

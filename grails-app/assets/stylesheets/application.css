@@ -9,10 +9,9 @@
 *
 *= require ../bower/angular/angular-csp.css
 *= require ../bower/bootstrap/dist/css/bootstrap.css
-
-*require main
-*require mobile
-*require errors.css
-*require_self
-
+* require ../bower/bootstrap/dist/css/bootstrap-theme
+* require main
+* require mobile
+* require errors
+* require_self
 */

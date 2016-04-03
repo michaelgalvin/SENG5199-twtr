@@ -8,6 +8,12 @@
     <title>TWTR: small bird noises</title>
     <asset:javascript src="application.js"/>
     <asset:stylesheet src="application.css"/>
+    <style>
+    tbody {
+        height: 240px;
+        overflow-y: auto;
+    }
+    </style>
 </head>
 
 <body ng-app="app" role="document">
@@ -17,11 +23,11 @@
     <div class="container">
         <div class="navbar-header">
             %{--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"--}%
-                    %{--aria-expanded="false" aria-controls="navbar">--}%
-                %{--<span class="sr-only">Toggle navigation</span>--}%
-                %{--<span class="icon-bar"></span>--}%
-                %{--<span class="icon-bar"></span>--}%
-                %{--<span class="icon-bar"></span>--}%
+            %{--aria-expanded="false" aria-controls="navbar">--}%
+            %{--<span class="sr-only">Toggle navigation</span>--}%
+            %{--<span class="icon-bar"></span>--}%
+            %{--<span class="icon-bar"></span>--}%
+            %{--<span class="icon-bar"></span>--}%
             %{--</button>--}%
             <a class="navbar-brand" href="#">TWTR</a>
         </div>
@@ -57,6 +63,27 @@
             <input type="text" ng-model="q"/>
         </div>
 
+        <div id="searchResults">
+
+            <h3>Your tweets</h3>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Message</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="message in messages">
+                    <td>{{message.author.handle}}</td>
+                    <td>{{message.text}}</td>
+                </tr>
+                </tbody>
+
+            </table>
+
+        </div>
     </div>
 
 </div>
