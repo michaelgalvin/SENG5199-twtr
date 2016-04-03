@@ -121,3 +121,5 @@ assets {
     minifyJs = true
     minifyCss = true
 }
+compileJava.dependsOn bowerInstall
+clean.dependsOn bowerClean

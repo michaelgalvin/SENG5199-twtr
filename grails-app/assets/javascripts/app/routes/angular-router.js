@@ -4,7 +4,7 @@
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/home', {
-            templateUrl: '/app/templates/helloStranger.htm',
+            templateUrl: '/app/helloStranger.htm',
             controller: 'welcomeController'
         })
         // .when('/home', {
