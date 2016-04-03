@@ -4,12 +4,15 @@
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/home', {
-            templateUrl: '/app/helloStranger.htm',
-            controller: 'welcomeController'
+            templateUrl: '/app/home.htm',
+            controller: 'homeController'
         })
-        // .when('/home', {
-        //     templateUrl: '/app/home.htm',
-        //     controller: 'mainController'
+        .when('/login', {
+            controller: 'loginCtrl'
+        })
+        // .when('/search', {
+        //     templateUrl: '/app/search.htm',
+        //     controller: 'searchController'
         // })
         // .when('/about', {
         //     templateUrl: '/app/about.html',
@@ -18,9 +21,6 @@ app.config(function ($routeProvider) {
         // .when('/contact', {
         //     templateUrl: '/app/contact.html',
         //     controller: 'contactController'
-        // })
-        // .when('/attendee/:action?/:id?', {
-        //     templateUrl: 'twtr/partials/attendee.html'
         // })
         .otherwise({
             redirectTo: '/home'
