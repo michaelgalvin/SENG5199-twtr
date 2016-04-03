@@ -45,13 +45,13 @@
         <p>This is a sharp app.</p>
     </div>
 
+    <div ng-view></div>
+    %{--<div ng-controller="welcomeController">--}%
+        %{--<h2>{{welcomeGreeting}}</h2>--}%
+    %{--</div>--}%
 
-    <div ng-controller="welcomeController">
-        <h2>{{welcomeGreeting}}</h2>
-    </div>
-
-    <div ng-controller="searchController">
-        <h2>{{searchGreeting}}</h2>
+    %{--<div ng-controller="searchController">--}%
+        %{--<h2>{{searchGreeting}}</h2>--}%
 
         <div class="input-group">
             <input type="text" ng-model="q"/>

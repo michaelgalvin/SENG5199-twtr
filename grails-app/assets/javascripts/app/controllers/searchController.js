@@ -9,7 +9,4 @@
  *
  */
 
-// Define a controller called 'welcomeController'
-angular.module('app').controller('searchController', function($scope) {
-    $scope.searchGreeting = 'Enter search parameters'
-});
+
