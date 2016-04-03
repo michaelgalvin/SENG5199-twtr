@@ -3,8 +3,8 @@
  */
 
 // Define a controller called 'welcomeController'
-angular.module('app').controller('searchController', function($scope) {
-    $scope.searchGreeting = 'Enter search parameters'
+angular.module('app').controller('welcomeController', function($scope) {
+    $scope.welcomeGreeting = 'Hello Stranger'
 });
 
 // Define a controller called 'searchController'
