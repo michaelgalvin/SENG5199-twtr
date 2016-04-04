@@ -47,12 +47,11 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <h1>TWTR: small bird noises</h1>
-
         <p>This is a sharp app.</p>
     </div>
 
 
-    <div ng-controller="welcomeController">
+    <!-- div ng-controller="welcomeController">
         <h2>{{welcomeGreeting}}</h2>
     </div>
 
@@ -84,7 +83,7 @@
             </table>
 
         </div>
-    </div>
+    </div -->
 
 </div>
 </body>
