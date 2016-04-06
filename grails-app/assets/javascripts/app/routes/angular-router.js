@@ -3,13 +3,13 @@
  */
 app.config(function ($routeProvider) {
     $routeProvider
-        .when('/home', {
-            templateUrl: '/app/home.htm',
+        .when('/', {
+            templateUrl: '/app/home.html',
             controller: 'homeController'
         })
-        .when('/login', {
-            controller: 'loginCtrl'
-        })
+        // .when('/login', {
+        //     controller: 'loginCtrl'
+        // })
         // .when('/search', {
         //     templateUrl: '/app/search.htm',
         //     controller: 'searchController'
@@ -23,6 +23,6 @@ app.config(function ($routeProvider) {
         //     controller: 'contactController'
         // })
         .otherwise({
-            redirectTo: '/home'
+            redirectTo: '/'
         });
 });

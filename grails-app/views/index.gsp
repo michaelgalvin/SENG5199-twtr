@@ -47,43 +47,53 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <h1>TWTR: small bird noises</h1>
+
         <p>This is a sharp app.</p>
     </div>
 
+    <div ng-view></div>
 
-    <!-- div ng-controller="welcomeController">
-        <h2>{{welcomeGreeting}}</h2>
+    <div id="controller-list" role="navigation">
+        <h2>Available Controllers:</h2>
+        <ul>
+            <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName }}">
+                <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
+            </g:each>
+        </ul>
     </div>
+    %{--<div ng-controller="welcomeController">--}%
+    %{--<h2>{{welcomeGreeting}}</h2>--}%
+    %{--</div>--}%
 
-    <div ng-controller="searchController">
-        <h2>{{searchGreeting}}</h2>
+    %{--<div ng-controller="searchController">--}%
+    %{--<h2>{{searchGreeting}}</h2>--}%
 
-        <div class="input-group">
-            <input type="text" ng-model="q"/>
-        </div>
+    %{--<div class="input-group">--}%
+    %{--<input type="text" ng-model="q"/>--}%
+    %{--</div>--}%
 
-        <div id="searchResults">
+    %{--<div id="searchResults">--}%
 
-            <h3>Your tweets</h3>
+    %{--<h3>Your tweets</h3>--}%
 
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>User</th>
-                    <th>Message</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="message in messages">
-                    <td>{{message.author.handle}}</td>
-                    <td>{{message.text}}</td>
-                </tr>
-                </tbody>
+    %{--<table class="table table-striped">--}%
+    %{--<thead>--}%
+    %{--<tr>--}%
+    %{--<th>User</th>--}%
+    %{--<th>Message</th>--}%
+    %{--</tr>--}%
+    %{--</thead>--}%
+    %{--<tbody>--}%
+    %{--<tr ng-repeat="message in messages">--}%
+    %{--<td>{{message.author.handle}}</td>--}%
+    %{--<td>{{message.text}}</td>--}%
+    %{--</tr>--}%
+    %{--</tbody>--}%
 
-            </table>
+    %{--</table>--}%
 
-        </div>
-    </div -->
+    %{--</div>--}%
+    %{--</div>--}%
 
 </div>
 </body>

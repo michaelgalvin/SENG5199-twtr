@@ -5,7 +5,7 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 
         //Stateless chain
         [
-                pattern: '/api/**',
+                pattern: '/account/**',
                 filters: 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter'
         ]
 
@@ -26,6 +26,6 @@ grails.plugin.springsecurity.userLookup.passwordPropertyName = 'password'
 grails.plugin.springsecurity.securityConfigType = 'InterceptUrlMap'
 grails.plugin.springsecurity.interceptUrlMap = [
         [
-                [pattern: '/api/account/**', access: ['ROLE_READ']]
+                [pattern: '/account/**', access: ['ROLE_READ']]
         ]
 ]
