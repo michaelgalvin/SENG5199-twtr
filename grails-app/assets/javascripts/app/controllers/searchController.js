@@ -6,7 +6,7 @@
  */
 
 // Define a controller called 'searchController'
-angular.module('app').controller('searchController', function ($scope) {
+angular.module('app').controller('searchController', function ($scope, authenticationService) {
 
     $scope.searchGreeting = 'Enter search parameters'
 

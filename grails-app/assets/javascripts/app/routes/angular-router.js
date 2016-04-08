@@ -4,16 +4,17 @@
 angular.module('app').config(function ($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: '/app/home.html',
+            templateUrl: '/app/home.htm',
             controller: 'homeController'
         })
-        // .when('/login', {
-        //     controller: 'loginCtrl'
-        // })
-        // .when('/search', {
-        //     templateUrl: '/app/search.htm',
-        //     controller: 'searchController'
-        // })
+        .when('/login', {
+            templateUrl: '/app/login.htm',
+            controller: 'loginController'
+        })
+        .when('/searchMessage', {
+            templateUrl: '/app/searchMessage.htm',
+            controller: 'searchController'
+        })
         // .when('/about', {
         //     templateUrl: '/app/about.html',
         //     controller: 'aboutController'
@@ -23,6 +24,6 @@ angular.module('app').config(function ($routeProvider) {
         //     controller: 'contactController'
         // })
         .otherwise({
-            redirectTo: '/'
+            redirectTo: '/login'
         });
 });

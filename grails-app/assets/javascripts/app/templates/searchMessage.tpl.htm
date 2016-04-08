@@ -1,0 +1,21 @@
+<div id="searchResults">
+
+    <h3>Your tweets</h3>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>User</th>
+            <th>Message</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="message in messages">
+            <td>{{message.author.handle}}</td>
+            <td>{{message.text}}</td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
