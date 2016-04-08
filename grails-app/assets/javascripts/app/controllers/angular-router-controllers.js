@@ -8,9 +8,9 @@
         $rootScope.$on('$routeChangeStart', function (event) {
 
             if (!authenticationService.isLoggedIn()) {
-                console.log('DENY');
-                event.preventDefault();
-                $location.path('/login');
+                //console.log('DENY');
+                //event.preventDefault();
+                //$location.path('/login');
             }
             else {
                 console.log('ALLOW');

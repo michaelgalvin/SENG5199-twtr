@@ -1,7 +1,7 @@
 /**
  * Created by galvi024 on 4/2/16.
  */
-app.config(function ($routeProvider) {
+angular.module('app').config(function ($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: '/app/home.html',

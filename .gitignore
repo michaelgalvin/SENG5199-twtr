@@ -4,6 +4,7 @@ Thumbs.db
 .gradle
 build/
 classes/
+node_modules/
 logs/
 .idea
 *.iml
