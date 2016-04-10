@@ -5,9 +5,6 @@ angular.module('app').controller('loginController', function($scope, $location, 
     $scope.doLogin = function() {
         securityService
             .login($scope.loginAttempt.username, $scope.loginAttempt.password)
-        // console.log("Hi there")
-        //     console.log($scope.loginAttempt.username)
-        //         console.log($scope.loginAttempt.password)
             .finally(function(result){
                 var currentUser = securityService.currentUser();
                 if (currentUser) {

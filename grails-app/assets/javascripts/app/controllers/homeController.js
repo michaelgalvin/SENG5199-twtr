@@ -1,4 +1,4 @@
-angular.module('app').controller('feedController', function ($scope, $location, securityService) {
+angular.module('app').controller('homeController', function ($scope, $location, securityService) {
     $scope.greeting = 'Hello Stranger';
     $scope.searchGreeting = 'Enter search parameters';
 
