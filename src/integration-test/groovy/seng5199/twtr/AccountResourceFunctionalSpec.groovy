@@ -32,7 +32,7 @@ class AccountResourceFunctionalSpec extends GebSpec {
 
     def 'passing a valid username and passowrd generates a token'() {
         setup:
-        def authentication = ([username: 'admin', password: '12345678aH'] as JSON) as String
+        def authentication = ([username: 'admin', password: 'admin'] as JSON) as String
 
         when:
         def response = restClient.post(path: '/api/login', body: authentication, requestContentType: 'application/json')
