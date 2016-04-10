@@ -56,13 +56,13 @@
 
             <div class="input-group cssform">
                 <p>
-                    <label for="username">Username:</label>
-                    <input type="text" class="text_" name="username" id="username">
+                    <label>Username:</label>
+                    <input ng-model="loginAttempt.username" />
                 </p>
 
                 <p>
-                    <label for="password">Password:</label>
-                    <input type="password" class="text_" name="password" id="password">
+                    <label>Password:</label>
+                    <input type="password" ng-model="loginAttempt.password">
                 </p>
 
                 <!--<p id="remember_me_holder">-->
@@ -71,7 +71,7 @@
                 <!--</p>-->
 
                 <p>
-                    <button type="button" class="btn btn-primary" ng-click="login()">Login</button>
+                    <button type="button" class="btn btn-primary" ng-click="doLogin()">Login</button>
                     <!--<a href="/login" id="submit" ng-click="login()">Login</a>-->
                 </p>
             </div>

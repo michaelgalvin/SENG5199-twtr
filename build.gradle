@@ -5,7 +5,6 @@ buildscript {
     repositories {
         mavenLocal()
         maven { url "https://repo.grails.org/grails/core" }
-        //maven { url 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
@@ -36,15 +35,14 @@ ext {
     gradleWrapperVersion = project.gradleWrapperVersion
 }
 
-//assets {
-//  minifyJs = true
-//  minifyCss = true
-//}
+assets {
+  minifyJs = true
+  minifyCss = true
+}
 
 repositories {
     mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
-    maven { url 'https://plugins.gradle.org/m2/' }
 }
 
 dependencyManagement {
@@ -93,7 +91,6 @@ dependencies {
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 
-    assets "com.craigburke.angular:angular-template-asset-pipeline:2.2.7"
 }
 
 task wrapper(type: Wrapper) {
@@ -116,6 +113,10 @@ bower {
     }
     'angular-route'('1.5.x') {
         source 'angular-route.js'
+    }
+
+    'angular-resource'('1.5.x') {
+        source 'angular-resource.js'
     }
 }
 

@@ -1,10 +1,22 @@
-app.controller('loginController', ['$scope', 'authenticationService', function ($scope, authenticationService) {
-    //submit
-    $scope.login = function () {
-        // Ask to the server, do your job and THEN set the user
-        console.log("Inside login controller");
-        $scope.message = "Inside login Controller via th scope message";
-        
-        authenticationService.setUser(user); //Update the state of the user in the app
+angular.module('app').controller('loginController', function($scope, $location, securityService) {
+
+    $scope.loginAttempt = {};
+
+    $scope.doLogin = function() {
+        securityService
+            .login($scope.loginAttempt.username, $scope.loginAttempt.password)
+        // console.log("Hi there")
+        //     console.log($scope.loginAttempt.username)
+        //         console.log($scope.loginAttempt.password)
+            .finally(function(result){
+                var currentUser = securityService.currentUser();
+                if (currentUser) {
+                    delete $scope.error;
+                    $location.path('/feed');
+                } else {
+                    $scope.error = 'Invalid login';
+                }
+            });
     };
-}]);
+
+});
