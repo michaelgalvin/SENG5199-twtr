@@ -28,7 +28,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#login">Login</a></li>
-                <li><a href="#searchMessage">Search</a></li>
+                <li><a href="#feed">Feed</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

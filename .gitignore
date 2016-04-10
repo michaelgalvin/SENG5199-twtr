@@ -4,7 +4,6 @@ Thumbs.db
 .gradle
 build/
 classes/
-node_modules/
 logs/
 .idea
 *.iml
@@ -13,3 +12,5 @@ logs/
 .project
 .settings
 .classpath
+grails-app/assets/bower
+node_modules/
