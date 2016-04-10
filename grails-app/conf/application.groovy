@@ -1,6 +1,12 @@
 /**
  * Created by galvi024 on 3/29/16.
  */
+
+// without this setting you will only get the id and class property of nested objects
+// when they are rendered to JSON
+// from https://manbuildswebsite.com/2010/02/08/rendering-json-in-grails-part-2-plain-old-groovy-objects-and-domain-objects/
+grails.converters.json.default.deep=true
+
 grails.plugin.springsecurity.filterChain.chainMap = [
 
         //Stateless chain

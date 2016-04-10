@@ -12,12 +12,20 @@ angular.module('app')
                 templateUrl: '/app/home.htm',
                 controller: 'homeController'
             })
-            .when('/feed', {
-                templateUrl: '/app/feed.htm',
-                controller: 'feedController'
+            .when('/search', {
+                templateUrl: '/app/search.htm',
+                controller: 'searchController'
+            })
+            .when('/posterMessages',{
+                templateUrl: '/app/searchResults.htm',
+                controller: 'PosterMessagesCtrl'
+            })
+            .when('/filteredMessages',{
+                templateUrl: '/app/searchResults.htm',
+                controller: 'GrepMessagesCtrl'
             })
             .otherwise({
-                redirectTo: '/feed'
+                redirectTo: '/search'
             })
     })
 

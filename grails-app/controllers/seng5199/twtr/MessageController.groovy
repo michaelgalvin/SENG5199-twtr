@@ -56,7 +56,9 @@ class MessageController extends RestfulController {
         if (messages.size == 0) {
             response.status = 404
         } else {
-            render messages as JSON
+            response.contentType = "application/json"
+            render messages.encodeAsJSON()
+            //render messages as JSON
         }
     }
 

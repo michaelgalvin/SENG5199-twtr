@@ -28,7 +28,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="#/home">Home</a></li>
                 <li><a href="#/login">Login</a></li>
-                <li><a href="#/feed">Feed</a></li>
+                <li><a href="#/search">Search</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -44,48 +44,6 @@
     </div>
 
     <div ng-view></div>
-
-    %{--<div id="controller-list" role="navigation">--}%
-        %{--<h2>Available Controllers:</h2>--}%
-        %{--<ul>--}%
-            %{--<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName }}">--}%
-                %{--<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>--}%
-            %{--</g:each>--}%
-        %{--</ul>--}%
-    %{--</div>--}%
-    %{--<div ng-controller="welcomeController">--}%
-    %{--<h2>{{welcomeGreeting}}</h2>--}%
-    %{--</div>--}%
-
-    %{--<div ng-controller="searchController">--}%
-    %{--<h2>{{searchGreeting}}</h2>--}%
-
-    %{--<div class="input-group">--}%
-    %{--<input type="text" ng-model="q"/>--}%
-    %{--</div>--}%
-
-    %{--<div id="searchResults">--}%
-
-    %{--<h3>Your tweets</h3>--}%
-
-    %{--<table class="table table-striped">--}%
-    %{--<thead>--}%
-    %{--<tr>--}%
-    %{--<th>User</th>--}%
-    %{--<th>Message</th>--}%
-    %{--</tr>--}%
-    %{--</thead>--}%
-    %{--<tbody>--}%
-    %{--<tr ng-repeat="message in messages">--}%
-    %{--<td>{{message.author.handle}}</td>--}%
-    %{--<td>{{message.text}}</td>--}%
-    %{--</tr>--}%
-    %{--</tbody>--}%
-
-    %{--</table>--}%
-
-    %{--</div>--}%
-    %{--</div>--}%
 
 </div>
 </body>

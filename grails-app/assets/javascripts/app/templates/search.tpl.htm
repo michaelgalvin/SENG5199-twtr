@@ -1,0 +1,23 @@
+<div class="container">
+    <!--
+        //  S1: Provide a search box for finding messages by message poster and message contents
+        //      on submit send Ajax query to the MessageController.search method
+    -->
+    <form class="form-signin">
+        <h2 class="form-feedsearch-heading">Enter your search</h2>
+        <label for="inputPoster" class="sr-only">Message poster</label>
+        <input type="handle" ng-model="handle" id="inputHandle" class="form-control"
+               placeholder="Name of poster" required autofocus>
+        <button type="button" class="btn btn-lg btn-primary btn-block" ng-click="searchByHandle(handle)">Search</button>
+    </form>
+    <!--
+        //  S2: Display matching results in a scrollable area below the search box
+        //      get results
+        //      loop through results and display them in a table
+
+        //  S3: Search result messages will display the message contents as well as the posting user.
+        //      message.author.handle, message.text
+    -->
+
+
+</div>
