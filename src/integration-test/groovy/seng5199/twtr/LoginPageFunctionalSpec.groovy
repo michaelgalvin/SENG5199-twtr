@@ -26,7 +26,7 @@ class LoginPageFunctionalSpec extends GebSpec {
         sleep(1000)
 
         then: "They are redirected to the feed page"
-        $('h3').text() == 'Your tweets'
+        $('h2').text() == 'Enter your search'
     }
 
     def 'L3: Invalid login will be rejected with an error message'() {
