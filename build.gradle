@@ -91,6 +91,7 @@ dependencies {
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 
+    assets "com.craigburke.angular:angular-template-asset-pipeline:2.2.7"
 }
 
 task wrapper(type: Wrapper) {

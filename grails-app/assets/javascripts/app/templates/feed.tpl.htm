@@ -1,21 +1,30 @@
-<div id="searchResults">
+<div class="container">
+    <form class="form-signin">
+        <h2 class="form-feedsearch-heading">Enter your search term</h2>
+        <label for="inputPoster" class="sr-only">Message poster</label>
+        <input type="username" ng-model="loginAttempt.username" id="inputUsername" class="form-control"
+               placeholder="Username" required autofocus>
+    </form>
+    <div id="feedResults" ng-model="messages">
 
-    <h3>Your tweets</h3>
+        <h3>Your tweets</h3>
 
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>User</th>
-            <th>Message</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="message in messages">
-            <td>{{message.author.handle}}</td>
-            <td>{{message.text}}</td>
-        </tr>
-        </tbody>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>User</th>
+                <th>Message</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="message in messages">
+                <td>{{message.author.handle}}</td>
+                <td>{{message.text}}</td>
+            </tr>
+            </tbody>
 
-    </table>
+        </table>
+
+    </div>
 
 </div>

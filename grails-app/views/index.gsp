@@ -26,9 +26,9 @@
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#login">Login</a></li>
-                <li><a href="#feed">Feed</a></li>
+                <li><a href="#/home">Home</a></li>
+                <li><a href="#/login">Login</a></li>
+                <li><a href="#/feed">Feed</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -45,14 +45,14 @@
 
     <div ng-view></div>
 
-    <div id="controller-list" role="navigation">
-        <h2>Available Controllers:</h2>
-        <ul>
-            <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName }}">
-                <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-            </g:each>
-        </ul>
-    </div>
+    %{--<div id="controller-list" role="navigation">--}%
+        %{--<h2>Available Controllers:</h2>--}%
+        %{--<ul>--}%
+            %{--<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName }}">--}%
+                %{--<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>--}%
+            %{--</g:each>--}%
+        %{--</ul>--}%
+    %{--</div>--}%
     %{--<div ng-controller="welcomeController">--}%
     %{--<h2>{{welcomeGreeting}}</h2>--}%
     %{--</div>--}%

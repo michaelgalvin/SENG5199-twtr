@@ -7,12 +7,13 @@
 //
 //= encoding UTF-8
 //= require jquery-2.1.3.js
+//= require ../bower/bootstrap.js
 //= require ../bower/bootstrap/bootstrap.js
 //= require ../bower/angular/angular.js
 //= require ../bower/angular-resource/angular-resource.js
 //= require ../bower/angular-route/angular-route.js
 //= require_self
-//= require_tree /app
+//= require_tree .
 
 // Create the angular application called 'app'
 var app = angular.module('app', ["ngRoute", 'ngResource']);
