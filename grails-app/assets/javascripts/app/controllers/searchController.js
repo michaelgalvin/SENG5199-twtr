@@ -10,4 +10,8 @@ angular.module('app').controller('searchController', ['$scope', '$location', fun
         $location.url('/filteredMessages?q=' + encodeURIComponent($scope.query));
     };
 
+    $scope.getUserDetail = function() {
+        //"/api/message"(resources: "message")
+        $location.url('/userDetail?q=' + encodeURIComponent($scope.query));
+    };
 }]);
