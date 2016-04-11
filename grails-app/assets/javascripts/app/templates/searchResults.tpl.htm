@@ -1,7 +1,8 @@
-<div class="container">
+
+<div class="searchResultContainer">
     <div id="searchResults" ng-model="messages">
 
-        <h3>Search Results</h3>
+        <h2>Search Results</h2>
 
         <table class="table table-striped scrollable">
             <thead>
@@ -17,8 +18,8 @@
                 //   * link needs to be created to the userDetail page
               -->
             <tr ng-repeat="message in messages">
-                <td><a href="{{ '/#/userDetail?q=' + message.author.handle}}">{{message.author.handle}}</a></td>
-                <td>{{message.text}}</td>
+                <td id="message-author-content"><a href="{{ '/#/userDetail?q=' + message.author.handle}}">{{message.author.handle}}</a></td>
+                <td id="message-text-content">{{message.text}}</td>
             </tr>
             </tbody>
 
