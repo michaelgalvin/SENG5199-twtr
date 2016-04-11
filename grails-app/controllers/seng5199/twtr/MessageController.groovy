@@ -56,9 +56,7 @@ class MessageController extends RestfulController {
         if (messages.size == 0) {
             response.status = 404
         } else {
-            response.contentType = "application/json"
-            render messages.encodeAsJSON()
-            //render messages as JSON
+            render messages as JSON
         }
     }
 
@@ -101,31 +99,4 @@ class MessageController extends RestfulController {
         response.status = 201
         respond message
     }
-
-//
-//    def list() {
-//        params.max = Math.min(max ?: 10, 100)
-//        def message = Message.list(max: params.max, offset: params.offset)
-//        def word = params.text
-//        def query = Message.where {
-//            text =~ "%${word}%"
-//        }
-//       def results = query.list()
-//    }
-
-//    def list() {
-//        def query = parm.query
-//        params.max = Math.min(params.max ? params.int('max') : 2, 100)
-//
-//        def messageList = Message.createCriteria().list (params) {
-//            if ( params.query ) {
-//                ilike("text", query)
-//            }
-//        }
-//
-//        [messageInstanceList: messageList, messageInstanceTotal: messageList.totalCount]
-//    }
-
-
-
 }
