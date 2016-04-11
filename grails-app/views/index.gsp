@@ -40,7 +40,7 @@
     <div class="jumbotron">
         <h1>TWTR: small bird noises</h1>
 
-        <p>This is a sharp app.</p>
+        <p>This app is for the birds.</p>
     </div>
 
     <div ng-view></div>

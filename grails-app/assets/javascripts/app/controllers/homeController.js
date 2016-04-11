@@ -2,6 +2,11 @@ angular.module('app').controller('homeController', function ($scope, $location, 
     $scope.greeting = 'Hello Stranger';
     $scope.searchGreeting = 'Enter search parameters';
 
+    $scope.getUserDetail = function() {
+        //"/api/message"(resources: "message")
+        $location.url('/userDetail?q=' + encodeURIComponent($scope.query));
+    };
+
     $scope.$watch(securityService.currentUser, function (value, oldValue) {
 
         if (!value && oldValue) {

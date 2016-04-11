@@ -8,9 +8,13 @@ angular.module('app')
                 templateUrl: '/app/login.htm',
                 controller: 'loginController'
             })
-            .when('/home/:handle?', {
+            .when('/home', {
                 templateUrl: '/app/home.htm',
                 controller: 'homeController'
+            })
+            .when('/userDetail',{
+                templateUrl: '/app/userDetail.htm',
+                controller: 'UserDetailCtrl'
             })
             .when('/search', {
                 templateUrl: '/app/search.htm',
