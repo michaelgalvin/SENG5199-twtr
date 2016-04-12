@@ -28,6 +28,10 @@ angular.module('app')
                 templateUrl: '/app/searchResults.htm',
                 controller: 'GrepMessagesCtrl'
             })
+            .when('/logout', {
+                templateUrl: '/app/logout.htm',
+                controller: 'logoutController'
+            })
             .otherwise({
                 redirectTo: '/search'
             })

@@ -27,5 +27,9 @@ angular.module('app').factory('securityService', ['$http', '$rootScope', functio
         return currentUser;
     };
 
+    service.logoutUser = function () {
+        currentUser = undefined;
+    }
+
     return service;
 }]);

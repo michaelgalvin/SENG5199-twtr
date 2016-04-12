@@ -58,3 +58,9 @@ table.scrollable {
     overflow: scroll;
     height: 200px;
 }
+
+.custom-scrollable
+{
+    overflow-y:scroll;
+    height: 200px;
+}
