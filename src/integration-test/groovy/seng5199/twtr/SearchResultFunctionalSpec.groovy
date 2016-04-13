@@ -28,31 +28,33 @@ class SearchResultFunctionalSpec extends GebSpec {
         $(".searchResultContainer").find("td", id: "message-text-content").text() == "Hello 1"
     }
 
-//    def 'Combination of S1-2, S3 and S4'() {
-//        //S1-2: Provide a search box for finding messages by message contents
-//        //S3: Search result messages will display the message contents as well as the posting user.
-//        when: 'Enter a message into the search box'
-//        $("#searchForm input[id=searchBox]").value("Hello 1")
-//        $("#searchForm button[id=searchMessage]").click() //Click the button
-//        sleep(1000)
-//
-//        then:
-//        $(".searchResultContainer").find("td", id: "message-author-content").text() == "groovyNewbie"
-//        $(".searchResultContainer").find("td", id: "message-text-content").text() == "Hello 1"
-////        $("#custom-scrollable").scrollTo(50, 0);
-////        $('.custom-scrollable').get(0).scrollHeight;
-////        $('message-scrollbar').scrollHeight != $('message-scrollbar').offsetHeight;
-//        println('Height is:')
-//        println($(currentWindow).height())
-//
-//        //S4: Clicking on the posting user’s name in a message will route to the user’s detail page
-//        when:
-//        $('#handle-link')[0].click();
-//        sleep(1000)
-//
-//        then:
-//        $('dt').first().text() == 'Message Count:'
-//    }
+    def 'Combination of S1-2, S3 and S4'() {
+        //S1-2: Provide a search box for finding messages by message contents
+        //S3: Search result messages will display the message contents as well as the posting user.
+        when: 'Enter a message into the search box'
+        $("#searchForm input[id=searchBox]").value("Hello 1")
+        $("#searchForm button[id=searchMessage]").click() //Click the button
+        sleep(1000)
+
+        then:
+        $(".searchResultContainer").find("td", id: "message-author-content").text() == "groovyNewbie"
+        $(".searchResultContainer").find("td", id: "message-text-content").text() == "Hello 1"
+//        $("#custom-scrollable").scrollTo(50, 0);
+//        $('.custom-scrollable').get(0).scrollHeight;
+//        $('message-scrollbar').scrollHeight != $('message-scrollbar').offsetHeight;
+        println('Height is:')
+        println($('#message-scrollbar').height)
+//        js.browser.$('#message-scrollbar').scroll();
+//        assert browser.driver.executeScript("$('#message-scrollbar').scroll(0,250);") " == 1
+
+        //S4: Clicking on the posting user’s name in a message will route to the user’s detail page
+        when:
+        $('#handle-link')[0].click();
+        sleep(1000)
+
+        then:
+        $('label').first().text() == 'Message Count:'
+    }
 
 //    def 'S2: Display matching results in a scrollable area below the search box'() {
 //        When:
