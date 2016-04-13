@@ -49,8 +49,10 @@ angular.module('app').controller('UserDetailCtrl', ['$scope', '$location', '$res
             console.log("Logged in user id " + $scope.loggedInUser.id);
             console.log("Detail user id " + $scope.user.id);
 
-            var FollowUser = $resource('/api/account/:myId/follow/?fid=:userId',
+            var FollowUser = $resource('/api/account/follow/:myId?fid=:userId',
+
                 {myId: $scope.loggedInUser.id, userId: $scope.user.id}, {
+
                     post: {
                         method: 'POST',
                         params: {myId: $scope.loggedInUser.id, userId: $scope.user.id},
