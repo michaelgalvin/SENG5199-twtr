@@ -1,13 +1,11 @@
-<h2> Hello home</h2>
-
-
-<div>
+<div id="home-form">
+    <h2> Hello home</h2>
     <label for="inputHandle" class="sr-only">User handle</label>
     <input type="handle" ng-model="query" id="inputHandle" class="form-control"
            placeholder="User handle" required autofocus>
 
     <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-lg btn-primary btn-block" ng-click="getUserDetail(query)">
+        <button type="button" id="search-by-user" class="btn btn-lg btn-primary btn-block" ng-click="getUserDetail(query)">
             Search by User
         </button>
 
