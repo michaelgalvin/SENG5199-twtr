@@ -6,7 +6,7 @@ import grails.test.mixin.integration.Integration
  * Created by cruzr004 on 4/10/16.
  */
 @Integration
-class SearchPageFuctionalSpec extends GebSpec {
+class SearchPageFunctionalSpec extends GebSpec {
 
     def 'S1: Provide a search box for finding messages by message poster and message contents'() {
             when: "User enters valid username and password"

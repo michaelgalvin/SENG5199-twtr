@@ -17,3 +17,9 @@
 
 // Create the angular application called 'app'
 var app = angular.module('app', ["ngRoute", 'ngResource']);
+
+if(typeof String.prototype.trim !== 'function') {
+    String.prototype.trim = function() {
+        return this.replace(/^\s+|\s+$/g, '');
+    }
+}

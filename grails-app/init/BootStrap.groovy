@@ -11,10 +11,16 @@ class BootStrap {
         new AccountRole(user: admin, role: role).save(flush: true, failOnError: true)
 
         // Define some intial users
-        def test1 = new Account(handle: 'groovyNewbie', email: 'newb@gmail.com', password: '12345678aH', name: 'Mike',followers:[test2], following: [test2]).save()
+        def test1 = new Account(handle: 'groovyNewbie', email: 'newb@gmail.com', password: '12345678aH', name: 'Mike').save(flush: true, failOnError: true)
         new AccountRole(user: test1, role: role).save(flush: true, failOnError: true)
-        def  test2 = new Account(handle: 'groovyNewbie2', email: 'newby2@gmail.com', password: '12345678aH', name: 'Newb',followers:[test1], following: [test1]).save()
+        def test2 = new Account(handle: 'groovyNewbie2', email: 'newby2@gmail.com', password: '12345678aH', name: 'Newb').save(flush: true, failOnError: true)
         new AccountRole(user: test2, role: role).save(flush: true, failOnError: true)
+
+        test1.addToFollowers(test2).save()
+        test1.addToFollowing(test2).save()
+        test2.addToFollowers(test1).save()
+        test2.addToFollowing(test1).save()
+
         def test3 = new Account(handle: 'PossessWeekly2', email: 'finallyPossessed@gmail.com',password: '12345678aH', name: 'Toro').save()
         new AccountRole(user: test3, role: role).save(flush: true, failOnError: true)
         def test4 = new Account(handle: 'TheNerd2', email: 'finalNerd@gmail.com',password: '12345678aH', name: 'Hope').save()

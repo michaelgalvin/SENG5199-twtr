@@ -4,7 +4,7 @@ import geb.spock.GebSpec
 import grails.test.mixin.integration.Integration
 
 @Integration
-class SearchResultFuntionalSpec extends GebSpec {
+class SearchResultFunctionalSpec extends GebSpec {
 
     def setup() {
         when:

@@ -14,7 +14,6 @@ grails.plugin.springsecurity.filterChain.chainMap = [
                 pattern: '/api/account/**',
                 filters: 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter'
         ]
-
 ]
 
 grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName = 'seng5199.twtr.AuthenticationToken'
