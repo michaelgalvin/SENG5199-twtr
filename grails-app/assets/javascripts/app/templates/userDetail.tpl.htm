@@ -6,9 +6,18 @@
 
         <table class="table table-striped">
             <thead>
-            <tr><th>Handle</th><td>{{user.handle}}</td></tr>
-            <tr><th>email</th><td>{{user.email}}</td></tr>
-            <tr><th>Name</th><td>{{user.name}}</td></tr>
+            <tr>
+                <th>Handle</th>
+                <td>{{user.handle}}</td>
+            </tr>
+            <tr>
+                <th>email</th>
+                <td>{{user.email}}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{user.name}}</td>
+            </tr>
             </thead>
         </table>
     </div>
@@ -17,35 +26,39 @@
             <dt>Message Count:</dt>
             <dd>{{messages.length}}</dd>
         </dl>
-        <table class="table table-striped">
-            <tbody>
-            <!--
-                 //  S4: Clicking on the posting user’s name in a message will route to the user’s detail page
-                //      when rendering message.author.handle wrap in link to detail page
-                //   * link needs to be created to the userDetail page
-              -->
-            <tr ng-repeat="message in messages">
-                <td colspan="2">{{message.text}}</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="custom-scrollable">
+            <table class="table table-striped">
+                <tbody>
+                <!--
+                     //  S4: Clicking on the posting user’s name in a message will route to the user’s detail page
+                    //      when rendering message.author.handle wrap in link to detail page
+                    //   * link needs to be created to the userDetail page
+                  -->
+                <tr ng-repeat="message in messages">
+                    <td colspan="2">{{message.text}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <div id="userFollowers" ng-model="followers">
         <dl>
             <dt>Follower Count:</dt>
             <dd>{{followers.length}}</dd>
         </dl>
-        <table class="table table-striped">
-            <tbody>
-            <!--
-                 //  S4: Clicking on the posting user’s name in a message will route to the user’s detail page
-                //      when rendering message.author.handle wrap in link to detail page
-                //   * link needs to be created to the userDetail page
-              -->
-            <tr ng-repeat="follower in followers">
-                <td colspan="2">{{follower.handle}}</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="custom-scrollable">
+            <table class="table table-striped">
+                <tbody>
+                <!--
+                     //  S4: Clicking on the posting user’s name in a message will route to the user’s detail page
+                    //      when rendering message.author.handle wrap in link to detail page
+                    //   * link needs to be created to the userDetail page
+                  -->
+                <tr ng-repeat="follower in followers">
+                    <td colspan="2">{{follower.handle}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="searchForm">
     <!--
         //  S1: Provide a search box for finding messages by message poster and message contents
         //      on submit send Ajax query to the MessageController.search method
@@ -7,14 +7,14 @@
         <h2 class="form-feedsearch-heading">Enter your search</h2>
         <div>
             <label for="inputPoster" class="sr-only">User or Term</label>
-            <input type="handle" ng-model="query" id="inputHandle" class="form-control"
+            <input type="handle" ng-model="query" id="searchBox" class="form-control"
                    placeholder="Name of poster or search term" required autofocus>
 
             <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-lg btn-primary btn-block" ng-click="searchByHandle(query)">
+                <button type="button" class="btn btn-lg btn-primary btn-block" id="searchUser" ng-click="searchByHandle(query)">
                     Search by User
                 </button>
-                <button type="button" class="btn btn-lg btn-primary btn-block" ng-click="searchByTerm(query)">
+                <button type="button" class="btn btn-lg btn-primary btn-block" id="searchMessage" ng-click="searchByTerm(query)">
                     Search by Content
                 </button>
             </div>

@@ -26,9 +26,10 @@
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="#/home">Home</a></li>
-                <li><a href="#/login">Login</a></li>
-                <li><a href="#/search">Search</a></li>
+                <li><a href="#/home" id="home-link">Home</a></li>
+                <li><a href="#/login" id="login-link">Login</a></li>
+                <li><a href="#/search" id="search-link">Search</a></li>
+                <li><a href="#/logout" id="logout-link">Logout</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

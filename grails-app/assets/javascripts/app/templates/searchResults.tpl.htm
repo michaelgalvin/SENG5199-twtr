@@ -1,29 +1,29 @@
-<div class="container">
+<div class="searchResultContainer">
     <div id="searchResults" ng-model="messages">
+        <h2>Search Results</h2>
+        <!--There is some custom css in application.css to make result-table scrollable-->
+        <div id="message-scrollbar" class="custom-scrollable">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Message</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--
+                     //  S4: Clicking on the posting user’s name in a message will route to the user’s detail page
+                    //      when rendering message.author.handle wrap in link to detail page
+                    //   * link needs to be created to the userDetail page
+                  -->
+                <tr ng-repeat="message in messages">
+                    <td id="message-author-content"><a href="{{ '/#/userDetail?q=' + message.author.handle}}" id="handle-link">{{message.author.handle}}</a></td>
+                    <td id="message-text-content">{{message.text}}</td>
+                </tr>
+                </tbody>
 
-        <h3>Search Results</h3>
-
-        <table class="table table-striped scrollable">
-            <thead>
-            <tr>
-                <th>User</th>
-                <th>Message</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!--
-                 //  S4: Clicking on the posting user’s name in a message will route to the user’s detail page
-                //      when rendering message.author.handle wrap in link to detail page
-                //   * link needs to be created to the userDetail page
-              -->
-            <tr ng-repeat="message in messages">
-                <td><a href="{{ '/#/userDetail?q=' + message.author.handle}}">{{message.author.handle}}</a></td>
-                <td>{{message.text}}</td>
-            </tr>
-            </tbody>
-
-        </table>
-
+            </table>
+        </div>
     </div>
 </div>
 
