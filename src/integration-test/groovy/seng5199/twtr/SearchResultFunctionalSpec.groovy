@@ -55,7 +55,4 @@ class SearchResultFunctionalSpec extends GebSpec {
         then:
         $('label').first().text() == 'Message Count:'
     }
-
-//    def 'S2: Display matching results in a scrollable area below the search box'() {
-//        When:
 }

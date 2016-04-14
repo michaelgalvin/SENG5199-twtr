@@ -34,13 +34,14 @@ class UserDetailFunctionalSpec extends GebSpec {
         then:
         $("#home-form input[id=inputHandle]").value("groovyNewbie2")
         $('#search-by-user')[0].click();
-        sleep(2000)
+        sleep(1000)
         $('#follow')[0].click()
         sleep(1000)
+        //U3: When the logged in user is following the detail user, the detail page will display a message or icon indicating this
         $('#follow').text() == 'Following'
     }
 
-    def '' () {
+    def 'U4: When the logged in user goes to their own detail page, they can edit their name and email' () {
 
     }
 }
