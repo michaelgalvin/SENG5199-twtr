@@ -13,7 +13,6 @@ class UserDetailFunctionalSpec extends GebSpec {
         $("#loginForm input[id=inputUsername]").value("admin")
         $("#loginForm input[id=inputPassword]").value("admin")
         $("#loginForm button[id=login]").click() //Click the button
-        sleep(1000)
     }
 
     def 'U1: User’s detail page will display the user’s name as well as a scrollable list of that user’s postings'() {
@@ -27,7 +26,7 @@ class UserDetailFunctionalSpec extends GebSpec {
         $('#user-name').text() == 'Admin'
     }
 
-    def 'U2: User’s detail page will provide a way for the logged in user to follow the detail user'() {
+    def 'U2 & U3: User’s detail page will provide a way for the logged in user to follow the detail user'() {
         when:
         $('#home-link')[0].click();
         sleep(1000)
@@ -41,7 +40,34 @@ class UserDetailFunctionalSpec extends GebSpec {
         $('#follow').text() == 'Following'
     }
 
-    def 'U4: When the logged in user goes to their own detail page, they can edit their name and email' () {
 
+    def 'U4: When the logged in user goes to their own detail page, they can edit their name and email' () {
+        when:// Go myAccount/ page
+        $('#my-account-link')[0].click();
+        sleep(1000)
+        then://Click the edit button
+        $('#edit-button')[0].click();
+        sleep(1000)// Enter new name and email
+        $("#edit-user-form input[id=name-input]").value("NewName!!!!")
+        $("#edit-user-form input[id=email-input]").value("newEmailAddress@somedomain.com")
+        sleep(1000)
+
+        when:
+        $('#save-button')[0].click()
+        sleep(1000)
+
+        then://Verify that it changed
+        $("#current-name").text() == 'NewName!!!!'
+        $("#current-email").text() == 'newEmailAddress@somedomain.com'
+        sleep(1000)
+
+        when://Navigate away and come back to verify that it persisted to the DB
+        $('#search-link')[0].click();
+        sleep(1000)
+        $('#my-account-link')[0].click();
+        sleep(1000)
+        then://New name and email should still be the same as above
+        $("#current-name").text() == 'NewName!!!!'
+        $("#current-email").text() == 'newEmailAddress@somedomain.com'
     }
 }
