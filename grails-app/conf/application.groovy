@@ -13,6 +13,10 @@ grails.plugin.springsecurity.filterChain.chainMap = [
         [
                 pattern: '/api/account/**',
                 filters: 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter'
+        ],
+        [
+                pattern: '/api/message/**',
+                filters: 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter'
         ]
 ]
 grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName = 'seng5199.twtr.AuthenticationToken'
@@ -28,5 +32,8 @@ grails.plugin.springsecurity.securityConfigType = 'InterceptUrlMap'
 grails.plugin.springsecurity.interceptUrlMap = [
         [
                 [pattern: '/api/account/**', access: ['ROLE_READ']]
+        ],
+        [
+                [pattern: '/api/message/**', access: ['ROLE_READ']]
         ]
 ]

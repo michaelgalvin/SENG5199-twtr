@@ -13,6 +13,7 @@ class UserDetailFunctionalSpec extends GebSpec {
         $("#loginForm input[id=inputUsername]").value("admin")
         $("#loginForm input[id=inputPassword]").value("admin")
         $("#loginForm button[id=login]").click() //Click the button
+        sleep(1000)
     }
 
     def 'U1: User’s detail page will display the user’s name as well as a scrollable list of that user’s postings'() {
