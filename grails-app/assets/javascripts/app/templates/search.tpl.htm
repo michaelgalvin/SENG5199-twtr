@@ -6,29 +6,21 @@
     <form class="form-signin">
         <h2 class="form-feedsearch-heading">Enter your search</h2>
         <div>
-            <label for="inputPoster" class="sr-only">User or Term</label>
+            <label id="inputPoster" class="sr-only">User or Term</label>
             <input type="handle" ng-model="query" id="searchBox" class="form-control"
                    placeholder="Name of poster or search term" required autofocus>
 
             <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-lg btn-primary btn-block" id="searchUser" ng-click="searchByHandle(query)">
+                <button type="button" class="btn btn-lg btn-primary btn-block" id="searchUser"
+                        ng-click="searchByHandle(query)">
                     Search by User
                 </button>
-                <button type="button" class="btn btn-lg btn-primary btn-block" id="searchMessage" ng-click="searchByTerm(query)">
+                <button type="button" class="btn btn-lg btn-primary btn-block" id="searchMessage"
+                        ng-click="searchByTerm(query)">
                     Search by Content
                 </button>
             </div>
 
         </div>
     </form>
-    <!--
-        //  S2: Display matching results in a scrollable area below the search box
-        //      get results
-        //      loop through results and display them in a table
-
-        //  S3: Search result messages will display the message contents as well as the posting user.
-        //      message.author.handle, message.text
-    -->
-
-
 </div>

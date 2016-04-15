@@ -1,0 +1,22 @@
+<div id="edit-user">
+    <table class="table table-condensed table-bordered">
+        <tr>
+            <th class="col-md-1"></th>
+            <th class="col-md-6">Name</th>
+            <th class="col-md-6">Email</th>
+        </tr>
+        <tr ng-hide="editSwitch">
+            <td><a type="button" ng-show="isLoggedIn" ng-hide="poster" class="btn btn-success"
+                   ng-click="editSwitch=!editSwitch">Edit</a></td>
+            <td>{{loggedInUser.name }}</td>
+            <td>{{loggedInUser.email}}</td>
+        </tr>
+
+        <tr ng-show="editSwitch">
+            <td><a type="button" ng-show="isLoggedIn" ng-hide="poster" class="btn btn-success"
+                   ng-click="editSwitch=!editSwitch">Save</a></td>
+            <td><input ng-model="loggedInUser.name"/></td>
+            <td><input ng-model="loggedInUser.email"/></td>
+        </tr>
+    </table>
+</div>

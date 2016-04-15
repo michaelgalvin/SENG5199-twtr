@@ -20,6 +20,11 @@ angular.module('app')
                 templateUrl: '/app/search.htm',
                 controller: 'searchController'
             })
+            .when('/myAccount',{
+                templateUrl: '/app/myAccount.htm',
+                controller: 'UserDetailCtrl'
+
+            })
             .when('/posterMessages',{
                 templateUrl: '/app/searchResults.htm',
                 controller: 'PosterMessagesCtrl'
