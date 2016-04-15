@@ -4,7 +4,6 @@
 angular.module('app').controller('UserDetailCtrl', ['$scope', '$location', '$resource', 'securityService', '$routeParams', function ($scope, $location, $resource, securityService, $routeParams) {
 
     var UserDetailQuery = $resource('/api/account/show/:query');
-
     var currentAuthToken = securityService.currentUser();
 
     $scope.loggedInUser = UserDetailQuery.get({query: currentAuthToken.username});
@@ -70,21 +69,25 @@ angular.module('app').controller('UserDetailCtrl', ['$scope', '$location', '$res
             });
         });
     };
-    
-    // 4) if false then clicking on it should make the loggedInUser follow the
-    //    user displayed on the user detail page
-    // $scope.iAmFollowingDebug = false;
 
     $resource('/api/message/accnt/:query', {query: handleQuery}).query().$promise.then(function (data) {
         $scope.messages = data;
     });
 
-    // return $http({
-    //     url: "/api/account/"+ id,
-    //     method: "PUT",
-    //     data: { "name": name, "email": email },
-    //     headers: {
-    //         'X-Auth-Token': token
-    //     }
-    // });
+    //U4 Edit Name or email address
+    $scope.updateMyaccount = function (newName, newEmail) {
+        $scope.loggedInUser.$promise.then(function (data) {
+            var resultOut = $resource('/api/account/:myId', {name: 'newName', email: 'newEmail'},
+                {
+                    update: {
+                        method: 'PUT',
+                        params: {myId: $scope.loggedInUser.id, name: newName, email: newEmail},
+                        headers: {'X-Auth-Token': currentAuthToken.token}
+                    }
+                }
+            );
+            resultOut.update();
+        });
+    };
+
 }]);

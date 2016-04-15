@@ -30,10 +30,6 @@ class BootStrap {
         def test6 = new Account(handle: 'Nerd2', email: '234hn@gmail.com',password: '12345678aH', name: 'totoro').save()
         new AccountRole(user: test6, role: role).save(flush: true, failOnError: true)
 
-
-
-
-
         new seng5199.twtr.Message(author: test1, text: 'Hello 1').save()
         new seng5199.twtr.Message(author: test1, text: 'Hello 2').save()
         new seng5199.twtr.Message(author: test1, text: 'Hello 3').save()
@@ -62,13 +58,5 @@ class BootStrap {
                 'so I used my mad ninja skills to attack').save()
         new seng5199.twtr.Message(author: test2, text: 'Hi 12').save()
         new seng5199.twtr.Message(author: test2, text: 'Hi 13').save()
-
-
-
-
-
-    }
-    def destroy = {
-
     }
 }
