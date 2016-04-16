@@ -34,7 +34,7 @@ angular.module('app')
                 controller: 'GrepMessagesCtrl'
             })
             .when('/logout', {
-                templateUrl: '/app/logout.htm',
+                templateUrl: '/app/login.htm',
                 controller: 'logoutController'
             })
             .otherwise({
