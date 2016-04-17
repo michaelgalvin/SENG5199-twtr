@@ -1,6 +1,6 @@
-<div class="container" id="loginForm">
+<div class="container" id="loginForm" ng-controller="loginController">
     <div class="row error" ng-show="error"><h3 class="bg-danger">{{ error }}</h3></div>
-    <div class="row alert-success" ng-show="logout"><h3 class="bg-alert-success">{{ logout }}</h3></div>
+    <div class="row alert-success" ng-show="logout"><h3 id="logout-msg" class="bg-alert-success">{{ logout }}</h3></div>
     <form class="form-signin">
         <h2 class="form-signin-heading">Please Login</h2>
         <label for="inputUsername" class="sr-only">Username</label>

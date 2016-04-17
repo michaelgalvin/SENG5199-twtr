@@ -8,7 +8,7 @@ import grails.test.mixin.integration.Integration
  */
 @Integration
 class LogoutFunctionalSpec extends GebSpec{
-    def ''() {
+    def 'N3: Logout - clicking this should bring you to the login screen and provide a helpful message ‘Sorry to see you go… etc’'() {
         when: "User enters valid username and password, then click Logout"
         go '/'
         $("#loginForm input[id=inputUsername]").value("admin")
@@ -19,6 +19,6 @@ class LogoutFunctionalSpec extends GebSpec{
         sleep(1000)
 
         then:
-        $('h2').text() == "Sorry to see you go… etc"
+        $('#logout-msg').text() == "He's dead, Jim."
     }
 }

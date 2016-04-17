@@ -45,7 +45,7 @@ class SearchResultFunctionalSpec extends GebSpec {
         println('Height is:')
         println($('#message-scrollbar').height)
 //        js.browser.$('#message-scrollbar').scroll();
-//        assert browser.driver.executeScript("$('#message-scrollbar').scroll(0,250);") " == 1
+//        assert browser.driver.executeScript($('#message-scrollbar').click())  == 1
 
         //S4: Clicking on the posting user’s name in a message will route to the user’s detail page
         when:
