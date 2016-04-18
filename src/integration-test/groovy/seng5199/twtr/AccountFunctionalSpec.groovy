@@ -8,6 +8,7 @@ import groovyx.net.http.RESTClient
 import spock.lang.Ignore
 import spock.lang.Shared
 import spock.lang.Stepwise
+import spock.lang.Stepwise
 
 /**
  * Created by galvi024 on 2/26/16.
@@ -16,8 +17,6 @@ import spock.lang.Stepwise
 @Integration
 @Stepwise
 class AccountFunctionalSpec extends GebSpec {
-    @Shared
-    def accId
 
     RESTClient restClient
 
@@ -64,7 +63,6 @@ class AccountFunctionalSpec extends GebSpec {
     }
 
     def 'A3: Create a REST endpoint that returns JSON data with Account values for a user based on an account id or handle address.'() {
-        //http://localhost:8080/api/account/show/5
 
         given:
         def acc2 = new Account(handle: 'newAccount', email: 'new@umn.edu', password: '1234567Ad', name: 'NewUser')
@@ -83,7 +81,7 @@ class AccountFunctionalSpec extends GebSpec {
 
         when:
         def resp2 = restClient.get(path: "/api/account/show/${newAccount.data.handle}")
-        //http://localhost:8080/api/account/show/Posse2
+
         then:
         resp2.status == 200
         resp2.data.id
@@ -93,11 +91,11 @@ class AccountFunctionalSpec extends GebSpec {
     }
 
     def 'F1: Create a REST endpoint that will allow one account to follow another'() {
-        //http://localhost:8080/api/account/follow/1?fid=2
 
         when:
         def account1 = restClient.get(path:"/api/account/1")
         def account2 = restClient.get(path:"/api/account/2")
+
         then:
         account1.data.id
         account2.data.id
@@ -122,13 +120,11 @@ class AccountFunctionalSpec extends GebSpec {
         def jsonf1 = followAcc1 as JSON
         def newFollow1 = restClient.post(path: '/api/account/', body: jsonf1 as String, requestContentType: 'application/json')
         followAcc1.id = newFollow1.data.id
-        newFollow1 = null
 
         def followAcc2 = new Account(handle: 'TheNerd', email: 'todo@d.umn.edu', password: '1234567Ad', name: 'Trinity')
         def jsonf2 = followAcc2 as JSON
         def newFollow2 = restClient.post(path: '/api/account/', body: jsonf2 as String, requestContentType: 'application/json')
         followAcc2.id = newFollow2.data.id
-        newFollow2 = null
 
         when:
         restClient.post(path: "/api/account/follow/${followAcc1.id}", query: [fid: followAcc2.id ])
@@ -180,9 +176,9 @@ class AccountFunctionalSpec extends GebSpec {
 
         then:
         following5.size == 3
-        following5.findAll{ it.id == followAcc3.id }
-        following5.findAll{ it.id == followAcc4.id }
-        following5.findAll{ it.id == followAcc6.id }
+        following5.find{ it.id == followAcc3.id }
+        following5.find{ it.id == followAcc4.id }
+        following5.find{ it.id == followAcc6.id }
     }
 //
 //    def 'F4: Create a ‘feed’ endpoint which will return the most recent messages by Accounts being followed by an Account.'(){
