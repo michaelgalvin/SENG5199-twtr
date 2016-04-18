@@ -39,13 +39,14 @@ class SearchResultFunctionalSpec extends GebSpec {
         then:
         $(".searchResultContainer").find("td", id: "message-author-content").text() == "groovyNewbie"
         $(".searchResultContainer").find("td", id: "message-text-content").text() == "Hello 1"
-//        $("#custom-scrollable").scrollTo(50, 0);
-//        $('.custom-scrollable').get(0).scrollHeight;
-//        $('message-scrollbar').scrollHeight != $('message-scrollbar').offsetHeight;
-        println('Height is:')
-        println($('#message-scrollbar').height)
-//        js.browser.$('#message-scrollbar').scroll();
-//        assert browser.driver.executeScript($('#message-scrollbar').click())  == 1
+        //Check for a scrollbar
+        // Shout out to Paul Michalek for help on this JS
+        def scrollTest =
+                "var style = window.getComputedStyle(document.getElementById('message-scrollbar'), null);" +
+                        "var vHeight = parseInt(style.getPropertyValue('height'));" +
+                        "var sHeight = document.getElementById('message-scrollbar').scrollHeight;" +
+                        "return (sHeight > vHeight) ? true : false;"
+        browser.driver.executeScript(scrollTest)
 
         //S4: Clicking on the posting user’s name in a message will route to the user’s detail page
         when:
