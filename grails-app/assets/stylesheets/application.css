@@ -7,7 +7,60 @@
 * You're free to add application-wide styles to this file and they'll appear at the top of the
 * compiled file, but it's generally better to create a new file per style scope.
 *
-*= require main
-*= require mobile
-*= require_self
+*= require ../bower/angular/angular-csp.css
+*= require ../bower/bootstrap/dist/css/bootstrap.css
+* require ../bower/bootstrap/dist/css/bootstrap-theme
+* require main
+* require mobile
+* require errors
+* require_self
 */
+
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* signin style */
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="username"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+table.scrollable {
+    overflow: scroll;
+    height: 200px;
+}
+
+.custom-scrollable
+{
+    overflow-y:scroll;
+    height: 200px;
+}

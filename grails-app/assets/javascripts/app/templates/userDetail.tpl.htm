@@ -1,0 +1,49 @@
+<div class="container">
+    <div id="userDetails" ng-model="user">
+
+        <h3>User Details for {{user.handle}}</h3>
+
+        <table class="table table-striped">
+            <thead>
+
+            <div ng-hide="editSwitch">
+                <tr>
+                    <th>Email</th>
+                    <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td id="user-name">{{user.name}}</td>
+                </tr>
+            </div>
+            <tr>
+                <td colspan="2">
+                    <button type="button" id="follow" class="btn btn-lg btn-primary btn-block"
+                            ng-click="followUser()">
+                        {{toFollow}}
+                    </button>
+                </td>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div id="userMessages" ng-model="messages">
+        <h4>Posts by {{user.handle}}</h4>
+        <p><label>Message Count:</label> {{messages.length}}</p>
+        <div class="custom-scrollable panel panel-default">
+            <table class="table table-striped">
+                <tbody>
+                <!--
+                     //  S4: Clicking on the posting user’s name in a message will route to the user’s detail page
+                    //      when rendering message.author.handle wrap in link to detail page
+                    //   * link needs to be created to the userDetail page
+                  -->
+                <tr ng-repeat="message in messages">
+                    <td colspan="2">{{message.text}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,23 @@
+{
+  "name": "SENG5199-twtr",
+  "version": "1.0.0",
+  "description": "a small twitter like assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelgalvin/SENG5199-twtr.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelgalvin/SENG5199-twtr/issues"
+  },
+  "homepage": "https://github.com/michaelgalvin/SENG5199-twtr#readme",
+  "dependencies": {
+    "bower": "^1.7.9"
+  }
+}

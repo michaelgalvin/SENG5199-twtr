@@ -5,16 +5,22 @@
 // You're free to add application-wide JavaScript to this file, but it's generally better
 // to create separate JavaScript files as needed.
 //
+//= encoding UTF-8
 //= require jquery-2.1.3.js
-//= require_tree .
+//= require ../bower/bootstrap.js
+//= require ../bower/bootstrap/bootstrap.js
+//= require ../bower/angular/angular.js
+//= require ../bower/angular-resource/angular-resource.js
+//= require ../bower/angular-route/angular-route.js
+//= require ../bower/angular-webstorage/angular-webstorage.js
 //= require_self
+//= require_tree .
 
-if (typeof jQuery !== 'undefined') {
-    (function($) {
-        $('#spinner').ajaxStart(function() {
-            $(this).fadeIn();
-        }).ajaxStop(function() {
-            $(this).fadeOut();
-        });
-    })(jQuery);
+// Create the angular application called 'app'
+var app = angular.module('app', ["ngRoute", 'ngResource', 'webStorageModule']);
+
+if(typeof String.prototype.trim !== 'function') {
+    String.prototype.trim = function() {
+        return this.replace(/^\s+|\s+$/g, '');
+    }
 }

@@ -100,5 +100,4 @@ class AccountController extends RestfulController {
         response.status = 201
         respond account
     }
-
 }

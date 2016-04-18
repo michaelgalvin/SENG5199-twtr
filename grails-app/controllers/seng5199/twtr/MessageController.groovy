@@ -20,7 +20,13 @@ class MessageController extends RestfulController {
     @Override
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        def messages = Message.findAll("from Message order by date_created", [max: params.max, offset: params.offset])
+        def messages
+        if (params.text) {
+            messages = Message.findAll("from Message where text=${params.text} order by date_created", [max: params.max, offset: params.offset])
+        }
+        else {
+            messages = Message.findAll("from Message order by date_created", [max: params.max, offset: params.offset])
+        }
         render messages as JSON
     }
 
@@ -93,31 +99,4 @@ class MessageController extends RestfulController {
         response.status = 201
         respond message
     }
-
-//
-//    def list() {
-//        params.max = Math.min(max ?: 10, 100)
-//        def message = Message.list(max: params.max, offset: params.offset)
-//        def word = params.text
-//        def query = Message.where {
-//            text =~ "%${word}%"
-//        }
-//       def results = query.list()
-//    }
-
-//    def list() {
-//        def query = parm.query
-//        params.max = Math.min(params.max ? params.int('max') : 2, 100)
-//
-//        def messageList = Message.createCriteria().list (params) {
-//            if ( params.query ) {
-//                ilike("text", query)
-//            }
-//        }
-//
-//        [messageInstanceList: messageList, messageInstanceTotal: messageList.totalCount]
-//    }
-
-
-
 }
