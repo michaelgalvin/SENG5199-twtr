@@ -14,3 +14,4 @@ logs/
 .classpath
 grails-app/assets/bower
 node_modules/
+out/
