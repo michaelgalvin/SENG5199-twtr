@@ -12,20 +12,19 @@ class SearchResultFunctionalSpec extends GebSpec {
         $("#loginForm input[id=inputUsername]").value("admin")
         $("#loginForm input[id=inputPassword]").value("admin")
         $("#loginForm button[id=login]").click() //Click the button
-        sleep(1000)
+
         then:
-        $('h2').first().text() == 'Enter your search'
+        waitFor { $('h2').first().text() == 'Enter your search' }
     }
 
     def 'S1-1: Provide a search box for finding messages by message poster'() {
         when: 'Enter a handle into the searchbox'
         $("#searchForm input[id=searchBox]").value("groovyNewbie")
         $("#searchForm button[id=searchUser]").click() //Click the button
-        sleep(1000)
 
         then: 'Should be taken to the Search Result page'
-        $('h2').first().text() == 'Search Results'
-        $(".searchResultContainer").find("td", id: "message-text-content").text() == "Hello 1"
+        waitFor { $('h2').first().text() == 'Search Results' }
+        waitFor { $(".searchResultContainer").find("td", id: "message-text-content").text() == 'Hello 1' }
     }
 
     def 'Combination of S1-2, S3 and S4'() {
@@ -34,10 +33,9 @@ class SearchResultFunctionalSpec extends GebSpec {
         when: 'Enter a message into the search box'
         $("#searchForm input[id=searchBox]").value("Hello 1")
         $("#searchForm button[id=searchMessage]").click() //Click the button
-        sleep(1000)
 
         then:
-        $(".searchResultContainer").find("td", id: "message-author-content").text() == "groovyNewbie"
+        waitFor { $(".searchResultContainer").find("td", id: "message-author-content").text() == "groovyNewbie" }
         $(".searchResultContainer").find("td", id: "message-text-content").text() == "Hello 1"
         //Check for a scrollbar
         // Shout out to Paul Michalek for help on this JS
@@ -51,9 +49,8 @@ class SearchResultFunctionalSpec extends GebSpec {
         //S4: Clicking on the posting user’s name in a message will route to the user’s detail page
         when:
         $('#handle-link')[0].click();
-        sleep(1000)
 
         then:
-        $('label').first().text() == 'Message Count:'
+        waitFor { $('label').first().text() == 'Message Count:' }
     }
 }
