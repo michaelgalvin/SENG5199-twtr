@@ -37,6 +37,10 @@ angular.module('app')
                 templateUrl: '/app/login.htm',
                 controller: 'logoutController'
             })
+            .when('/message', {
+                templateUrl: '/app/message.htm',
+                controller: 'messageController'
+            })
             .otherwise({
                 redirectTo: '/search'
             })

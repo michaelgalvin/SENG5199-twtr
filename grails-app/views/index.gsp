@@ -30,6 +30,7 @@
                 <li><a href="#/login" id="login-link">Login</a></li>
                 <li><a href="#/search" id="search-link">Search</a></li>
                 <li><a href="#/myAccount" id="my-account-link">My Account</a></li>
+                <li><a href="#/message" id="send-message-link">Send Message</a></li>
                 <li><a href="#/logout" id="logout-link">Logout</a></li>
             </ul>
         </div><!--/.nav-collapse -->
