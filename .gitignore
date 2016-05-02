@@ -15,3 +15,5 @@ logs/
 grails-app/assets/bower
 node_modules/
 out/
+coverage/
+TESTS-*.xml
