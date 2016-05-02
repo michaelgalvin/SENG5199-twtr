@@ -1,6 +1,6 @@
 angular.module('app').controller('messageController', ['$scope', '$location', '$resource', 'securityService', '$routeParams', function ($scope, $location, $resource, securityService, $routeParams) {
 
-    var maxPostLength = 128;
+    var maxPostLength = 40;
     $('#twtr-text').attr('maxLength',maxPostLength);
 
     $scope.alerts = [];
@@ -14,6 +14,11 @@ angular.module('app').controller('messageController', ['$scope', '$location', '$
             type: 'success',
             msg: 'Message Posted!'
         }
+    };
+
+    $scope.errorAlert = function(errorMsg) {
+        var error = { type: 'danger', msg: errorMsg};
+        $scope.alerts.push(error);
     };
 
     $scope.addAlert = function(alert) {
@@ -55,7 +60,7 @@ angular.module('app').controller('messageController', ['$scope', '$location', '$
 
         if (text_remaining === 0) {
             $scope.resetAlerts();
-            $scope.addAlert(alerts.error);
+            $scope.errorAlert("Your tweet can be only " + maxPostLength + " characters long.");
             var text = $('#twtr-text').val();
             $('#twtr-text').val(text.substring(0,text.length-1));
         }
@@ -65,6 +70,11 @@ angular.module('app').controller('messageController', ['$scope', '$location', '$
 
     $scope.postMessage = function() {
         var post = $scope.text;
+
+        if (!$scope.twtrform.twtrcheck.$valid) {
+            $scope.errorAlert("Only humans can tweet using this application!");
+            return;
+        }
 
         Message
             .save({
