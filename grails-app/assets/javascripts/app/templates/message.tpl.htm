@@ -1,17 +1,18 @@
 <div class="col-sm-4 well">
-    <form accept-charset="UTF-8" action="" method="POST">
-        <textarea class="form-control" id="text" name="text" placeholder="Type in your message" rows="2"></textarea>
-        <h6 class="pull-right" id="count_message"></h6>
-        <button class="btn btn-info" type="submit">Post New Message</button>
+    <form accept-charset="UTF-8" ng-controller="messageController">
+        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+        <textarea class="form-control" id="twtr-text" ng-keydown="keypress($event)" ng-model="text" name="text" placeholder="Type in your message" rows="2"></textarea>
+        <h6 class="pull-right" id="char_count"></h6>
+        <button class="btn btn-info" ng-click="postMessage()">Post New Message</button>
     </form>
 </div>
 
 <!--<script>-->
-    <!--$('#count_message').html(40 + ' remaining');-->
+    <!--$('#char_count').html(40 + ' remaining');-->
     <!--$('#text').keyup(function () {-->
         <!--var text_length = $('#text').val().length;-->
         <!--var text_remaining = 40 - text_length;-->
         <!--console.log("Inside js tag. ", text_remaining + "remaining")-->
-        <!--$('#count_message').html(text_remaining + ' remaining');-->
+        <!--$('#char_count').html(text_remaining + ' remaining');-->
     <!--});-->
 <!--</script>-->
