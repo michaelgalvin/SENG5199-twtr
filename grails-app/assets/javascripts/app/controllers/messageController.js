@@ -54,11 +54,11 @@ angular.module('app').controller('messageController', ['$scope', '$location', '$
     );
 
     $scope.keypress = function($event) {
-
-        var text_length = $('#twtr-text').val().length;
+        var text_length = $('#twtr-text').val().length + 1;
+        console.log(text_length)
         var text_remaining = maxPostLength - text_length;
 
-        if (text_remaining === 0) {
+        if (text_remaining < 0) {
             $scope.resetAlerts();
             $scope.errorAlert("Your tweet can be only " + maxPostLength + " characters long.");
             var text = $('#twtr-text').val();
@@ -97,7 +97,4 @@ angular.module('app').controller('messageController', ['$scope', '$location', '$
                 }
             );
     };
-
-
-
 }]);
