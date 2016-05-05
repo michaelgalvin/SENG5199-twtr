@@ -6,8 +6,7 @@
 // to create separate JavaScript files as needed.
 //
 //= encoding UTF-8
-//= require ../bower/jquery/dist/jquery.js
-//= require ../bower/bootstrap.js
+//= require jquery-2.1.3.js
 //= require ../bower/bootstrap/bootstrap.js
 //= require ../bower/angular/angular.js
 //= require ../bower/angular-bootstrap/ui-bootstrap.js

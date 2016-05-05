@@ -8,12 +8,12 @@
 * compiled file, but it's generally better to create a new file per style scope.
 *
 *= require ../bower/angular/angular-csp.css
-*= require ../bower/bootstrap/dist/css/bootstrap.css
-* require ../bower/bootstrap/dist/css/bootstrap-theme
+*= require ../bower/bootstrap/css/bootstrap.css
+*= require ../bower/bootstrap/css/bootstrap-theme
 * require main
 * require mobile
 * require errors
-* require_self
+*= require_self
 */
 
 body {
