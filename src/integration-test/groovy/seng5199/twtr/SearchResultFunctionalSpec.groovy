@@ -2,6 +2,7 @@ package seng5199.twtr
 
 import geb.spock.GebSpec
 import grails.test.mixin.integration.Integration
+import java.text.SimpleDateFormat
 
 @Integration
 class SearchResultFunctionalSpec extends GebSpec {
@@ -17,7 +18,7 @@ class SearchResultFunctionalSpec extends GebSpec {
         waitFor { $('h2').first().text() == 'Enter your search' }
     }
 
-    def 'S1-1: Provide a search box for finding messages by message poster'() {
+    def 'S1-1(and R5): Provide a search box for finding messages by message poster'() {
         when: 'Enter a handle into the searchbox'
         $("#searchForm input[id=searchBox]").value("groovyNewbie")
         $("#searchForm button[id=searchUser]").click() //Click the button
@@ -25,6 +26,11 @@ class SearchResultFunctionalSpec extends GebSpec {
         then: 'Should be taken to the Search Result page'
         waitFor { $('h2').first().text() == 'Search Results' }
         waitFor { $(".searchResultContainer").find("td", id: "message-text-content").text() == 'Hello 1' }
+        // R5. Use the AngularJS date filter to format the date of a message in the feed in this style:
+        // Mar 16. Validate with a functional test.
+        def date = new Date()
+        def sdf = new SimpleDateFormat("MMM d")
+        waitFor { $(".searchResultContainer").find("td", id: "message-date-created").text() == sdf.format(date).toString() }
     }
 
     def 'Combination of S1-2, S3 and S4'() {

@@ -8,6 +8,7 @@
                 <tr>
                     <th>User</th>
                     <th>Message</th>
+                    <th>Created</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -19,6 +20,7 @@
                 <tr ng-repeat="message in messages">
                     <td id="message-author-content"><a href="{{ '/#/userDetail?q=' + message.author.handle}}" id="handle-link">{{message.author.handle}}</a></td>
                     <td id="message-text-content">{{message.text}}</td>
+                    <td id="message-date-created">{{message.dateCreated|date:'MMM d'}}</td>
                 </tr>
                 </tbody>
 

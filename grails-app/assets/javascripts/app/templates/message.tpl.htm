@@ -1,9 +1,9 @@
 <div class="col-sm-4 well">
     <form name="twtrform" accept-charset="UTF-8" ng-controller="messageController" novalidate>
-        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"><h5 id="message-alert" >{{alert.msg}}</h5></uib-alert>
         <textarea class="form-control" id="twtr-text" ng-keydown="keypress($event)" ng-model="text" name="twtrtext" placeholder="Type in your message" rows="2"></textarea>
         <h6 class="pull-right" id="char_count"></h6>
-        <p><input name="twtrcheck" type="checkbox" ng-model="humancheck" required /> I swear I am a human.</p>
-        <button class="btn btn-primary" ng-click="postMessage()">Post New Message</button>
+        <p><input name="twtrcheck" id="twtr-check" type="checkbox" ng-model="humancheck" required /> I swear I am a human.</p>
+        <button id="message-button" class="btn btn-primary" ng-click="postMessage()">Post New Message</button>
     </form>
 </div>
